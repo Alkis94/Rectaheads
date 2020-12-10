@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class SicknessManager : MonoBehaviour
 {
     public static SicknessManager Instance { get; private set; } = null;
-    public Rectahead[,] rectaheads { get; private set; } = new Rectahead[5, 3];
+    public Rectahead[,] rectaheads { get; private set; } 
     private List <Vector2Int> aliveRectaheadsLocations = new List<Vector2Int>();
 
     private void Awake()
@@ -22,6 +22,8 @@ public class SicknessManager : MonoBehaviour
 
     private void Start()
     {
+        rectaheads = new Rectahead[RectaheadManager.Instance.Rectaheads.GetLength(0), RectaheadManager.Instance.Rectaheads.GetLength(1)];
+
         for (int i = 0; i < RectaheadManager.Instance.Rectaheads.GetLength(0); i++)
         {
             for (int j = 0; j < RectaheadManager.Instance.Rectaheads.GetLength(1); j++)

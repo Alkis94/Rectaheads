@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class RectaheadManager : MonoBehaviour
 {
+
     public static RectaheadManager Instance { get; private set; } = null;
-    public GameObject[,] Rectaheads { get; private set; } = new GameObject[5, 3];
+    public GameObject[,] Rectaheads { get; private set; } 
 
     [SerializeField]
     private GameObject rectahead;
+    [SerializeField]
+    private Vector2Int arraySize;
+    [SerializeField]
+    private Vector2Int startingPoint;
     
-
-    // Start is called before the first frame update
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -22,6 +25,8 @@ public class RectaheadManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        Rectaheads = new GameObject[arraySize.x, arraySize.y];
 
 
         for (int i = 0; i < Rectaheads.GetLength(0); i++)
@@ -36,8 +41,8 @@ public class RectaheadManager : MonoBehaviour
 
     private Vector2 ArrayToLevelCoordinates(int i, int j)
     {
-        float x = -2 + i;
-        float y = -1 + j;
+        float x = startingPoint.x + i;
+        float y = startingPoint.y + j;
         return new Vector2(x, y);
     }
 }

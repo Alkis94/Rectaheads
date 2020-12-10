@@ -7,15 +7,20 @@ public class Rectahead : MonoBehaviour
     public bool IsImmune{ get; private set; } = false;
     public bool IsAlive { get; private set; } = true;
     public bool IsSick { get; private set; } = false;
+    
     public SicknessType SicknessType { get; private set; } = SicknessType.none;
 
+    private readonly int moneyCooldown = 40;
     private float sicknessDuration;
     private float timeSick = 0;
     private float immunityDuration = 0;
+    private bool hasMoney = false;
     [SerializeField]
     private float immuneSystemDefense;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private GameObject moneyBubble;
 
     public float ImmuneSystemDefense
     {
@@ -55,45 +60,17 @@ public class Rectahead : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(IsSick)
-        {
-            switch (SicknessType)
-            {
-                case SicknessType.virus:
-                    break;
-                case SicknessType.bacteria:
-                    if (MedicineManager.Instance.CurrentMedicine == MedicineType.antibiotic)
-                    {
-                        Recover();
-                    }
-                    break;
-                case SicknessType.fungi:
-                    if (MedicineManager.Instance.CurrentMedicine == MedicineType.antifungal)
-                    {
-                        Recover();
-                    }
-                    break;
-                default:
-                    break;
-            }
-        }
 
-        if(MedicineManager.Instance.CurrentMedicine == MedicineType.vaccine)
+        if(hasMoney)
         {
-            if(!IsSick && IsAlive)
-            {
-                AddImmunity(15);
-            }
+            MedicineManager.Instance.Money += Random.Range(5,25);
+            hasMoney = false;
+            moneyBubble.SetActive(false);
         }
-
-        if (MedicineManager.Instance.CurrentMedicine == MedicineType.vitamin)
+        else
         {
-            if (IsAlive)
-            {
-                ImmuneSystemDefense += 35;
-            }
+            MedicineManager.Instance.RectaheadWasClicked(this);
         }
-
     }
 
     public void GetSick(SicknessType sicknessType)
@@ -147,6 +124,8 @@ public class Rectahead : MonoBehaviour
 
     private IEnumerator UpdateEverySecond()
     {
+        int currentMoneyCooldown = Random.Range(0, moneyCooldown);
+
         while(true)
         {
             if(IsSick)
@@ -172,6 +151,10 @@ public class Rectahead : MonoBehaviour
                         break;
                 }
 
+                currentMoneyCooldown = moneyCooldown;
+                moneyBubble.SetActive(false);
+                hasMoney = false;
+
                 timeSick += 1;
                 if(sicknessDuration <= timeSick)
                 {
@@ -192,6 +175,17 @@ public class Rectahead : MonoBehaviour
                     RemoveImmunity();
                 }
 
+            }
+
+            if(currentMoneyCooldown <= 0 && !hasMoney)
+            {
+                currentMoneyCooldown = moneyCooldown;
+                moneyBubble.SetActive(true);
+                hasMoney = true;
+            }
+            else if (!hasMoney)
+            {
+                currentMoneyCooldown -= 1;
             }
 
             yield return new WaitForSeconds(1f);
@@ -221,6 +215,8 @@ public class Rectahead : MonoBehaviour
     private void Kill()
     {
         IsAlive = false;
+        hasMoney = false;
+        moneyBubble.SetActive(false);
         animator.SetTrigger("Die");
         StopAllCoroutines();
         spriteRenderer.color = Color.white;
