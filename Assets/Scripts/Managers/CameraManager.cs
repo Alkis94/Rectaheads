@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 using Cinemachine;
 
 public class CameraManager : MonoBehaviour
 {
-    [SerializeField]
-    private Vector2Int border = Vector2Int.zero;
     private Vector2Int currentLocation = Vector2Int.zero;
-    private Transform virtualCamera;
+    private Vector2Int currentMapLocation = Vector2Int.zero;
+    private GameObject virtualCamera;
+    private int[,] map;
 
     [SerializeField]
     private Button arrowUp;
@@ -21,68 +20,114 @@ public class CameraManager : MonoBehaviour
 
     private void Start()
     {
-        virtualCamera = FindObjectOfType<CinemachineVirtualCamera>().transform;
-    }
-
-    public void OnArrowUp()
-    {
-        if(currentLocation.y < border.y)
-        {
-            MoveCamera(new Vector2Int(0, 1));
-            arrowDown.interactable = true;
-
-            if (currentLocation.y == border.y)
-            {
-                arrowUp.interactable = false;
-            }
-        }
+        virtualCamera = FindObjectOfType<CinemachineVirtualCamera>().gameObject;
+        map = MapManager.Instance.Map;
     }
 
     public void OnArrowDown()
     {
-        if (currentLocation.y > 0)
-        {
-            MoveCamera(new Vector2Int(0, -1));
-            arrowUp.interactable = true;
+        MoveCameraY(1);
+        EnableCorrectArrows();
+    }
 
-            if (currentLocation.y == 0)
-            {
-                arrowDown.interactable = false;
-            }
-        }
+    public void OnArrowUp()
+    {
+        MoveCameraY(-1);
+        EnableCorrectArrows();
     }
 
     public void OnArrowRight()
     {
-        if (currentLocation.x < border.x)
-        {
-            MoveCamera(new Vector2Int(1, 0));
-            arrowLeft.interactable = true;
+        MoveCameraX(1);
+        EnableCorrectArrows();
+    }
 
-            if (currentLocation.x == border.x)
+    public void OnArrowLeft()
+    { 
+        MoveCameraX(-1);
+        EnableCorrectArrows();
+    }
+
+    private void MoveCameraX(int x)
+    {
+        currentLocation = new Vector2Int(currentLocation.x + x, currentLocation.y);
+        currentMapLocation = new Vector2Int(currentMapLocation.x + x * 2, currentMapLocation.y);
+        LeanTween.moveX(virtualCamera, 0.5f + currentLocation.x * 5, 0.5f);
+        MapManager.Instance.MoveCurrentLocation(currentLocation);
+    }
+
+    private void MoveCameraY(int y)
+    {
+        currentLocation = new Vector2Int(currentLocation.x, currentLocation.y + y);
+        currentMapLocation = new Vector2Int(currentMapLocation.x, currentMapLocation.y + y * 2);
+        LeanTween.moveY(virtualCamera, 0 - (currentLocation.y * 3), 0.5f);
+        MapManager.Instance.MoveCurrentLocation(currentLocation);
+    }
+
+    private void EnableCorrectArrows()
+    {
+        if (currentMapLocation.y + 1 < map.GetLength(1))
+        {
+            if (map[currentMapLocation.x, currentMapLocation.y + 1] == 1)
+            {
+                arrowDown.interactable = true;
+            }
+            else
+            {
+                arrowDown.interactable = false;
+            }
+        }
+        else
+        {
+            arrowDown.interactable = false;
+        }
+
+        if (currentMapLocation.y - 1 > 0)
+        {
+            if (map[currentMapLocation.x, currentMapLocation.y - 1] == 1)
+            {
+                arrowUp.interactable = true;
+            }
+            else
+            {
+                arrowUp.interactable = false;
+            }
+        }
+        else
+        {
+            arrowUp.interactable = false;
+        }
+
+        if (currentMapLocation.x + 1 < map.GetLength(0))
+        {
+            if (map[currentMapLocation.x + 1, currentMapLocation.y] == 1)
+            {
+                arrowRight.interactable = true;
+            }
+            else
             {
                 arrowRight.interactable = false;
             }
         }
-    }
-
-    public void OnArrowLeft()
-    {
-        if (currentLocation.x > 0)
+        else
         {
-            MoveCamera(new Vector2Int(-1, 0));
-            arrowRight.interactable = true;
+            arrowRight.interactable = false;
+        }
 
-            if (currentLocation.x == 0)
+        if (currentMapLocation.x - 1 > 0)
+        {
+            if (map[currentMapLocation.x - 1, currentMapLocation.y] == 1)
+            {
+                arrowLeft.interactable = true;
+            }
+            else
             {
                 arrowLeft.interactable = false;
             }
         }
-    }
-
-    private void MoveCamera(Vector2Int moveBy)
-    {
-        virtualCamera.position = new Vector3(virtualCamera.position.x + moveBy.x * 5, virtualCamera.position.y + moveBy.y * 3, -1);
-        currentLocation = new Vector2Int(currentLocation.x + moveBy.x , currentLocation.y + moveBy.y);
+        else
+        {
+            arrowLeft.interactable = false;
+        }
     }
 }

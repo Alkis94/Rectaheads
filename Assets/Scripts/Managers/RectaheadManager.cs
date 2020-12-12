@@ -42,7 +42,7 @@ public class RectaheadManager : MonoBehaviour
     private Vector2 ArrayToLevelCoordinates(int i, int j)
     {
         float x = startingPoint.x + i;
-        float y = startingPoint.y + j;
+        float y = startingPoint.y - j;
         return new Vector2(x, y);
     }
 }

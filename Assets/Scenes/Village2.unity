@@ -151,7 +151,7 @@ PrefabInstance:
     - target: {fileID: 7369097395969050815, guid: 12b90e6fe5aa4314d9b8126f0b21a667,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 7369097395969050815, guid: 12b90e6fe5aa4314d9b8126f0b21a667,
         type: 3}
@@ -231,7 +231,7 @@ PrefabInstance:
     - target: {fileID: 7369097395969050815, guid: 12b90e6fe5aa4314d9b8126f0b21a667,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 7369097395969050815, guid: 12b90e6fe5aa4314d9b8126f0b21a667,
         type: 3}
@@ -406,6 +406,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 531914970807404101, guid: 76849520aff43ca4b8ead91006048225,
+        type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 531914970807404104, guid: 76849520aff43ca4b8ead91006048225,
         type: 3}
@@ -819,7 +824,7 @@ PrefabInstance:
     - target: {fileID: 7868042608802290963, guid: 94a645c2290ccc04494f88629b964e73,
         type: 3}
       propertyPath: startingPoint.y
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7868042608802290973, guid: 94a645c2290ccc04494f88629b964e73,
         type: 3}

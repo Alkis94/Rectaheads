@@ -8,7 +8,6 @@ using TMPro;
 public class MedicineManager : MonoBehaviour
 {
     public static MedicineManager Instance { get; private set; } = null;
-    
 
     [SerializeField]
     private RectTransform[] medicine = new RectTransform[5];
@@ -43,7 +42,6 @@ public class MedicineManager : MonoBehaviour
         }
     }
     
-
     private void Awake()
     {
         if (Instance != null && Instance != this)
