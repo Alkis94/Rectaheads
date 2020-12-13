@@ -10,7 +10,7 @@ public class Rectahead : MonoBehaviour
     
     public SicknessType SicknessType { get; private set; } = SicknessType.none;
 
-    private readonly int moneyCooldown = 40;
+    private readonly int moneyCooldown = 60;
     private float sicknessDuration;
     private float timeSick = 0;
     private float immunityDuration = 0;
@@ -21,6 +21,10 @@ public class Rectahead : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField]
     private GameObject moneyBubble;
+    [SerializeField]
+    private SpriteRenderer immuneBar;
+    [SerializeField]
+    private Sprite[] immuneBarStates = new Sprite[6];
 
     public float ImmuneSystemDefense
     {
@@ -30,17 +34,44 @@ public class Rectahead : MonoBehaviour
         }
         set
         {
-            if(value > 100)
+            if (value > 100)
             {
+                immuneBar.sprite = immuneBarStates[5];
                 immuneSystemDefense = 100;
             }
-            else if ( value < 0 )
+            else if (value > 80)
             {
-                immuneSystemDefense = 0;
-            }
-            else
-            {
+                immuneBar.sprite = immuneBarStates[5];
                 immuneSystemDefense = value;
+
+            }
+            else if (value > 60)
+            {
+                immuneBar.sprite = immuneBarStates[4];
+                immuneSystemDefense = value;
+
+            }
+            else if (value > 40)
+            {
+                immuneBar.sprite = immuneBarStates[3];
+                immuneSystemDefense = value;
+
+            }
+            else if (value > 20)
+            {
+                immuneBar.sprite = immuneBarStates[2];
+                immuneSystemDefense = value;
+
+            }
+            else if (value > 0)
+            {
+                immuneBar.sprite = immuneBarStates[1];
+                immuneSystemDefense = value;
+            }
+            else 
+            {
+                immuneBar.sprite = immuneBarStates[0];
+                immuneSystemDefense = 0;
             }
         }
     }
@@ -63,7 +94,7 @@ public class Rectahead : MonoBehaviour
 
         if(hasMoney)
         {
-            MedicineManager.Instance.Money += Random.Range(5,25);
+            MedicineManager.Instance.Money += Random.Range(10,50);
             hasMoney = false;
             moneyBubble.SetActive(false);
         }
@@ -134,17 +165,17 @@ public class Rectahead : MonoBehaviour
                 {
                     case SicknessType.virus:
                         ImmuneSystemDefense -= 1f;
-                        SpreadSickness(SicknessType.virus, 30, 1, true, false);
+                        SpreadSickness(SicknessType.virus, 20, 5, true, false);
                         CheckForKill(15, 1);
                         break;
                     case SicknessType.bacteria:
                         ImmuneSystemDefense -= 2;
-                        SpreadSickness(SicknessType.bacteria, 50, 3, true, true);
+                        SpreadSickness(SicknessType.bacteria, 40, 7, true, true);
                         CheckForKill(30, 3);
                         break;
                     case SicknessType.fungi:
                         ImmuneSystemDefense -= 3;
-                        SpreadSickness(SicknessType.fungi, 30, 1, false, true);
+                        SpreadSickness(SicknessType.fungi, 30, 3, false, true);
                         CheckForKill(5, 0);
                         break;
                     default:
@@ -217,6 +248,7 @@ public class Rectahead : MonoBehaviour
         IsAlive = false;
         hasMoney = false;
         moneyBubble.SetActive(false);
+        immuneBar.gameObject.SetActive(false);
         animator.SetTrigger("Die");
         StopAllCoroutines();
         spriteRenderer.color = Color.white;

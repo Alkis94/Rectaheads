@@ -46,29 +46,29 @@ public class SicknessManager : MonoBehaviour
 
     private IEnumerator UpdateEverySecond()
     {
-        float virusCooldown = Time.time + 12;
-        float bacteriaCooldown = Time.time + 10;
-        float fungiCooldown = Time.time + 15;
+        float virusCooldown = Time.time + 30;
+        float bacteriaCooldown = Time.time + 15;
+        float fungiCooldown = Time.time + 20;
 
         while (true)
         {
             if(Time.time > virusCooldown)
             {
-                SicknessAttack(RandomRectahead(), SicknessType.virus, 50, 1);
-                virusCooldown = Time.time + 12;
+                SicknessAttack(RandomRectahead(), SicknessType.virus, 40, 3);
+                virusCooldown = Time.time + 30;
             }
 
             if (Time.time > bacteriaCooldown)
             {
-                SicknessAttack(RandomRectahead(), SicknessType.bacteria, 70, 5);
-                bacteriaCooldown = Time.time + 10;
+                SicknessAttack(RandomRectahead(), SicknessType.bacteria, 70, 7);
+                bacteriaCooldown = Time.time + 15;
             }
 
 
             if (Time.time > fungiCooldown)
             {
-                SicknessAttack(RandomRectahead(), SicknessType.fungi, 60, 3);
-                fungiCooldown = Time.time + 15;
+                SicknessAttack(RandomRectahead(), SicknessType.fungi, 60, 5);
+                fungiCooldown = Time.time + 20;
             }
 
             yield return new WaitForSeconds(1f);

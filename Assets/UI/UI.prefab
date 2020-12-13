@@ -1750,7 +1750,7 @@ PrefabInstance:
     - target: {fileID: 1505082873888668622, guid: 9a5bedf93a3846e448b2029d108fa83c,
         type: 3}
       propertyPath: cost
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1505082873888668622, guid: 9a5bedf93a3846e448b2029d108fa83c,
         type: 3}
@@ -1811,7 +1811,7 @@ PrefabInstance:
     - target: {fileID: 9191639908242856009, guid: 9a5bedf93a3846e448b2029d108fa83c,
         type: 3}
       propertyPath: m_text
-      value: 7$
+      value: 10$
       objectReference: {fileID: 0}
     - target: {fileID: 9191639909270551104, guid: 9a5bedf93a3846e448b2029d108fa83c,
         type: 3}
@@ -1941,7 +1941,7 @@ PrefabInstance:
     - target: {fileID: 1505082873888668622, guid: 9a5bedf93a3846e448b2029d108fa83c,
         type: 3}
       propertyPath: cost
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2061087901047423750, guid: 9a5bedf93a3846e448b2029d108fa83c,
         type: 3}
@@ -1993,6 +1993,11 @@ PrefabInstance:
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9191639908242856009, guid: 9a5bedf93a3846e448b2029d108fa83c,
+        type: 3}
+      propertyPath: m_text
+      value: 15$
       objectReference: {fileID: 0}
     - target: {fileID: 9191639908242856009, guid: 9a5bedf93a3846e448b2029d108fa83c,
         type: 3}
@@ -2127,7 +2132,7 @@ PrefabInstance:
     - target: {fileID: 1505082873888668622, guid: 9a5bedf93a3846e448b2029d108fa83c,
         type: 3}
       propertyPath: cost
-      value: 25
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1505082873888668622, guid: 9a5bedf93a3846e448b2029d108fa83c,
         type: 3}
@@ -2188,7 +2193,7 @@ PrefabInstance:
     - target: {fileID: 9191639908242856009, guid: 9a5bedf93a3846e448b2029d108fa83c,
         type: 3}
       propertyPath: m_text
-      value: 25$
+      value: 10$
       objectReference: {fileID: 0}
     - target: {fileID: 9191639908242856009, guid: 9a5bedf93a3846e448b2029d108fa83c,
         type: 3}
