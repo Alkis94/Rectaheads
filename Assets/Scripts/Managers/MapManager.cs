@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System.IO;
 using UnityEngine.SceneManagement;
 
+[DefaultExecutionOrder(-99)]
 public class MapManager : MonoBehaviour
 {
     public static MapManager Instance { get; private set; } = null;
@@ -18,6 +19,8 @@ public class MapManager : MonoBehaviour
     private RectTransform currentLocationIcon;
     [SerializeField]
     private Transform mapParent;
+    [SerializeField]
+    private GameObject background;
     public int [,] Map { get; private set; }
 
     private void Awake()
@@ -39,7 +42,8 @@ public class MapManager : MonoBehaviour
 
     private void Start()
     {
-        currentLocationIcon.localPosition = new Vector3(-15 + startingRoom.x * 6, 9 +  startingRoom.y * - 3, 0);
+        currentLocationIcon.localPosition = new Vector3(-15 + startingRoom.x * 3, 9 +  startingRoom.y * - 3, 0);
+        Transform backgroundParent = GameObject.FindGameObjectWithTag("Background").transform;
 
         for (int i = 0; i < Map.GetLength(0); i++)
         {
@@ -54,6 +58,7 @@ public class MapManager : MonoBehaviour
                         break;
                     case 2:
                         ExtensionMethods.InstantiateAtLocalPosition(room, mapParent, ArrayToMapCoordinates(i, j));
+                        Instantiate(background, new Vector3(5 * i / 2, -3 * j / 2, 0),Quaternion.identity, backgroundParent);
                         break;
                 }
             }
@@ -68,7 +73,7 @@ public class MapManager : MonoBehaviour
 
     public void MoveCurrentLocation(Vector2Int currentLocation)
     {
-        currentLocationIcon.localPosition = new Vector3(-15 + currentLocation.x * 6, 9 - currentLocation.y * 6, 0);
+        currentLocationIcon.localPosition = new Vector3(-15 + currentLocation.x * 3, 9 - currentLocation.y * 3, 0);
     }
 
     private void InvertMap()
@@ -84,6 +89,16 @@ public class MapManager : MonoBehaviour
         }
 
         Map = tempMap;
+    }
+
+    private void SpawnBackgrounds()
+    {
+
+    }
+
+    public Vector2Int GetStartingRoom()
+    {
+        return startingRoom;
     }
 }
 

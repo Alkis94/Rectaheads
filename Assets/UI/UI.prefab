@@ -1091,6 +1091,8 @@ MonoBehaviour:
   room: {fileID: 4387600085466861838, guid: b328c2c596f263040a8e9d76235dcbd2, type: 3}
   currentLocationIcon: {fileID: 3858101728278736892}
   mapParent: {fileID: 6923049272539594654}
+  background: {fileID: 7369097395969050813, guid: 12b90e6fe5aa4314d9b8126f0b21a667,
+    type: 3}
 --- !u!1 &1758053893990814698
 GameObject:
   m_ObjectHideFlags: 0
@@ -1605,7 +1607,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fff0a7120a0a984b99c4ea539557f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  border: {x: 1, y: 1}
   arrowUp: {fileID: 854644304837480009}
   arrowDown: {fileID: 6006457047134905110}
   arrowLeft: {fileID: 2140816947685898808}

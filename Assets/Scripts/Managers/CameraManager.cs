@@ -4,7 +4,6 @@ using Cinemachine;
 
 public class CameraManager : MonoBehaviour
 {
-    private Vector2Int currentLocation = Vector2Int.zero;
     private Vector2Int currentMapLocation = Vector2Int.zero;
     private GameObject virtualCamera;
     private int[,] map;
@@ -22,6 +21,10 @@ public class CameraManager : MonoBehaviour
     {
         virtualCamera = FindObjectOfType<CinemachineVirtualCamera>().gameObject;
         map = MapManager.Instance.Map;
+        Vector2Int startPosition = MapManager.Instance.GetStartingRoom();
+        currentMapLocation = startPosition;
+        virtualCamera.transform.position = new Vector3(0.5f + startPosition.x * 5 / 2, startPosition.y * (-3) / 2, -1);
+        EnableCorrectArrows();
     }
 
     public void OnArrowDown()
@@ -50,18 +53,16 @@ public class CameraManager : MonoBehaviour
 
     private void MoveCameraX(int x)
     {
-        currentLocation = new Vector2Int(currentLocation.x + x, currentLocation.y);
         currentMapLocation = new Vector2Int(currentMapLocation.x + x * 2, currentMapLocation.y);
-        LeanTween.moveX(virtualCamera, 0.5f + currentLocation.x * 5, 0.5f);
-        MapManager.Instance.MoveCurrentLocation(currentLocation);
+        LeanTween.moveX(virtualCamera, 0.5f + currentMapLocation.x * 5 / 2, 0.5f);
+        MapManager.Instance.MoveCurrentLocation(currentMapLocation);
     }
 
     private void MoveCameraY(int y)
     {
-        currentLocation = new Vector2Int(currentLocation.x, currentLocation.y + y);
         currentMapLocation = new Vector2Int(currentMapLocation.x, currentMapLocation.y + y * 2);
-        LeanTween.moveY(virtualCamera, 0 - (currentLocation.y * 3), 0.5f);
-        MapManager.Instance.MoveCurrentLocation(currentLocation);
+        LeanTween.moveY(virtualCamera, 0 - (currentMapLocation.y * 3 / 2), 0.5f);
+        MapManager.Instance.MoveCurrentLocation(currentMapLocation);
     }
 
     private void EnableCorrectArrows()

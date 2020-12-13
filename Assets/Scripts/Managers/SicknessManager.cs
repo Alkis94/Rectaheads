@@ -28,8 +28,11 @@ public class SicknessManager : MonoBehaviour
         {
             for (int j = 0; j < RectaheadManager.Instance.Rectaheads.GetLength(1); j++)
             {
-                rectaheads[i, j] = RectaheadManager.Instance.Rectaheads[i, j].GetComponent<Rectahead>();
-                aliveRectaheadsLocations.Add(new Vector2Int(i, j));
+                if(RectaheadManager.Instance.Rectaheads[i, j] != null)
+                {
+                    rectaheads[i, j] = RectaheadManager.Instance.Rectaheads[i, j].GetComponent<Rectahead>();
+                    aliveRectaheadsLocations.Add(new Vector2Int(i, j));
+                }   
             }
         }
 

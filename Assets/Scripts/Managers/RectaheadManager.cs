@@ -7,14 +7,14 @@ public class RectaheadManager : MonoBehaviour
 
     public static RectaheadManager Instance { get; private set; } = null;
     public GameObject[,] Rectaheads { get; private set; } 
-
     [SerializeField]
     private GameObject rectahead;
     [SerializeField]
     private Vector2Int arraySize;
     [SerializeField]
     private Vector2Int startingPoint;
-    
+    private int[,] map;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -27,11 +27,27 @@ public class RectaheadManager : MonoBehaviour
         }
 
         Rectaheads = new GameObject[arraySize.x, arraySize.y];
+        map = MapManager.Instance.Map;
 
-
-        for (int i = 0; i < Rectaheads.GetLength(0); i++)
+        for(int i = 0; i < map.GetLength(0); i += 2)
         {
-            for(int j = 0; j < Rectaheads.GetLength(1); j++)
+            for (int j = 0; j < map.GetLength(1); j += 2)
+            {
+                if (map[i, j] == 2) SpawnRectaheadsInRoom(i, j);
+            }
+        }
+
+    }
+
+    private void SpawnRectaheadsInRoom(int x, int y)
+    {
+
+        x = x / 2;
+        y = y / 2;
+
+        for (int i = x * 5; i < x * 5  + 5; i++)
+        {
+            for (int j = y * 3 ; j < y * 3 + 3; j++)
             {
                 Rectaheads[i, j] = Instantiate(rectahead, ArrayToLevelCoordinates(i, j), Quaternion.identity, transform);
                 Rectaheads[i, j].GetComponent<Rectahead>().Location = new Vector2Int(i, j);
