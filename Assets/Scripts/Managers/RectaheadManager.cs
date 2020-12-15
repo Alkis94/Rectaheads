@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class RectaheadManager : MonoBehaviour
 {
-
     public static RectaheadManager Instance { get; private set; } = null;
     public GameObject[,] Rectaheads { get; private set; } 
     [SerializeField]
@@ -14,6 +14,9 @@ public class RectaheadManager : MonoBehaviour
     [SerializeField]
     private Vector2Int startingPoint;
     private int[,] map;
+    private TextMeshProUGUI rectaheadCount;
+    private int rectaheadCurrentCount = 0;
+    private int rectaheadTotalCount = 0 ;
 
     void Awake()
     {
@@ -39,6 +42,12 @@ public class RectaheadManager : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        rectaheadCount = GameObject.FindGameObjectWithTag("RectaheadCount").GetComponent<TextMeshProUGUI>();
+        rectaheadCount.text = rectaheadCurrentCount + "/" + rectaheadTotalCount;
+    }
+
     private void SpawnRectaheadsInRoom(int x, int y)
     {
 
@@ -53,6 +62,9 @@ public class RectaheadManager : MonoBehaviour
                 Rectaheads[i, j].GetComponent<Rectahead>().Location = new Vector2Int(i, j);
             }
         }
+
+        rectaheadCurrentCount += 15;
+        rectaheadTotalCount += 15;
     }
 
     private Vector2 ArrayToLevelCoordinates(int i, int j)
@@ -60,5 +72,11 @@ public class RectaheadManager : MonoBehaviour
         float x = startingPoint.x + i;
         float y = startingPoint.y - j;
         return new Vector2(x, y);
+    }
+
+    public void ReduceRectaheadCount()
+    {
+        rectaheadCurrentCount--;
+        rectaheadCount.text = rectaheadCurrentCount + "/" + rectaheadTotalCount;
     }
 }

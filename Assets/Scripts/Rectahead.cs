@@ -253,6 +253,7 @@ public class Rectahead : MonoBehaviour
         StopAllCoroutines();
         spriteRenderer.color = Color.white;
         SicknessManager.Instance.RemoveDeadRectahead(Location);
+        RectaheadManager.Instance.ReduceRectaheadCount();
     }
 
     private void SpreadSickness(SicknessType sicknessType, float spreadAttack, float spreadChance, bool spreadSquare, bool spreadCross)
