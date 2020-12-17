@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections;
 
 public class Rectahead : MonoBehaviour
@@ -10,7 +11,7 @@ public class Rectahead : MonoBehaviour
     
     public SicknessType SicknessType { get; private set; } = SicknessType.none;
 
-    private readonly int moneyCooldown = 60;
+    private readonly int moneyCooldown = 90;
     private float sicknessDuration;
     private float timeSick = 0;
     private float immunityDuration = 0;
@@ -25,6 +26,7 @@ public class Rectahead : MonoBehaviour
     private SpriteRenderer immuneBar;
     [SerializeField]
     private Sprite[] immuneBarStates = new Sprite[6];
+    
 
     public float ImmuneSystemDefense
     {
@@ -91,16 +93,20 @@ public class Rectahead : MonoBehaviour
 
     private void OnMouseDown()
     {
-
-        if(hasMoney)
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
-            MedicineManager.Instance.Money += Random.Range(10,50);
-            hasMoney = false;
-            moneyBubble.SetActive(false);
-        }
-        else
-        {
-            MedicineManager.Instance.RectaheadWasClicked(this);
+            if (hasMoney)
+            {
+                MedicineManager.Instance.Money += Random.Range(10, 50);
+                hasMoney = false;
+                moneyBubble.SetActive(false);
+                animator.SetBool("HasMoney", false);
+                AudioManager.Instance.PlayMoneySound();
+            }
+            else
+            {
+                MedicineManager.Instance.RectaheadWasClicked(this, animator);
+            }
         }
     }
 
@@ -134,7 +140,10 @@ public class Rectahead : MonoBehaviour
         SicknessType = SicknessType.none;
         sicknessDuration = 0;
         timeSick = 0;
+        IsImmune = true;
+        immunityDuration += 5;
         spriteRenderer.color = Color.white;
+        animator.SetBool("IsSick", false);
     }
 
     public void AddImmunity(float duration)
@@ -156,9 +165,13 @@ public class Rectahead : MonoBehaviour
     private IEnumerator UpdateEverySecond()
     {
         int currentMoneyCooldown = Random.Range(0, moneyCooldown);
+        float idleCooldown = Time.time + Random.Range(2,10);
 
         while(true)
         {
+
+            animator.SetBool("IsSick", IsSick);
+
             if(IsSick)
             {
                 switch(SicknessType)
@@ -170,7 +183,7 @@ public class Rectahead : MonoBehaviour
                         break;
                     case SicknessType.bacteria:
                         ImmuneSystemDefense -= 2;
-                        SpreadSickness(SicknessType.bacteria, 40, 7, true, true);
+                        SpreadSickness(SicknessType.bacteria, 35, 7, true, true);
                         CheckForKill(30, 3);
                         break;
                     case SicknessType.fungi:
@@ -185,6 +198,7 @@ public class Rectahead : MonoBehaviour
                 currentMoneyCooldown = moneyCooldown;
                 moneyBubble.SetActive(false);
                 hasMoney = false;
+                animator.SetBool("HasMoney", false);
 
                 timeSick += 1;
                 if(sicknessDuration <= timeSick)
@@ -210,13 +224,20 @@ public class Rectahead : MonoBehaviour
 
             if(currentMoneyCooldown <= 0 && !hasMoney)
             {
-                currentMoneyCooldown = moneyCooldown;
+                currentMoneyCooldown = Random.Range(moneyCooldown - 20, moneyCooldown + 20);
                 moneyBubble.SetActive(true);
                 hasMoney = true;
+                animator.SetBool("HasMoney", true);
             }
             else if (!hasMoney)
             {
                 currentMoneyCooldown -= 1;
+            }
+
+            if(idleCooldown < Time.time)
+            {
+                animator.SetTrigger("Idle");
+                idleCooldown += 5;
             }
 
             yield return new WaitForSeconds(1f);
@@ -245,15 +266,30 @@ public class Rectahead : MonoBehaviour
 
     private void Kill()
     {
+        GetComponent<BoxCollider2D>().enabled = false;
         IsAlive = false;
         hasMoney = false;
         moneyBubble.SetActive(false);
         immuneBar.gameObject.SetActive(false);
-        animator.SetTrigger("Die");
+        switch (SicknessType)
+        {
+            case SicknessType.virus:
+                animator.SetTrigger("VirusDeath");
+                break;
+            case SicknessType.bacteria:
+                animator.SetTrigger("BacteriaDeath");
+                break;
+            case SicknessType.fungi:
+                animator.SetTrigger("FungiDeath");
+                break;
+            default:
+                break;
+        }
         StopAllCoroutines();
         spriteRenderer.color = Color.white;
         SicknessManager.Instance.RemoveDeadRectahead(Location);
         RectaheadManager.Instance.ReduceRectaheadCount();
+        AudioManager.Instance.PlayDeathSound();
     }
 
     private void SpreadSickness(SicknessType sicknessType, float spreadAttack, float spreadChance, bool spreadSquare, bool spreadCross)

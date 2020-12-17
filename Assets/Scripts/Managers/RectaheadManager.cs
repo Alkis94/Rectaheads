@@ -11,12 +11,10 @@ public class RectaheadManager : MonoBehaviour
     private GameObject rectahead;
     [SerializeField]
     private Vector2Int arraySize;
-    [SerializeField]
-    private Vector2Int startingPoint;
     private int[,] map;
     private TextMeshProUGUI rectaheadCount;
-    private int rectaheadCurrentCount = 0;
-    private int rectaheadTotalCount = 0 ;
+    public int RectaheadCurrentCount { get; private set; } = 0;
+    public int RectaheadTotalCount { get; private set; } = 0 ;
 
     void Awake()
     {
@@ -45,7 +43,7 @@ public class RectaheadManager : MonoBehaviour
     private void Start()
     {
         rectaheadCount = GameObject.FindGameObjectWithTag("RectaheadCount").GetComponent<TextMeshProUGUI>();
-        rectaheadCount.text = rectaheadCurrentCount + "/" + rectaheadTotalCount;
+        rectaheadCount.text = RectaheadCurrentCount + "/" + RectaheadTotalCount;
     }
 
     private void SpawnRectaheadsInRoom(int x, int y)
@@ -63,20 +61,20 @@ public class RectaheadManager : MonoBehaviour
             }
         }
 
-        rectaheadCurrentCount += 15;
-        rectaheadTotalCount += 15;
+        RectaheadCurrentCount += 15;
+        RectaheadTotalCount += 15;
     }
 
     private Vector2 ArrayToLevelCoordinates(int i, int j)
     {
-        float x = startingPoint.x + i;
-        float y = startingPoint.y - j;
+        float x = -2 + i;
+        float y =  1 - j;
         return new Vector2(x, y);
     }
 
     public void ReduceRectaheadCount()
     {
-        rectaheadCurrentCount--;
-        rectaheadCount.text = rectaheadCurrentCount + "/" + rectaheadTotalCount;
+        RectaheadCurrentCount--;
+        rectaheadCount.text = RectaheadCurrentCount + "/" + RectaheadTotalCount;
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using TMPro;
@@ -63,7 +61,7 @@ public class MedicineManager : MonoBehaviour
         OnMedicineChanged();
     }
 
-    public void RectaheadWasClicked(Rectahead rectahead)
+    public void RectaheadWasClicked(Rectahead rectahead, Animator animator)
     {
         if (rectahead.IsSick)
         {
@@ -75,7 +73,9 @@ public class MedicineManager : MonoBehaviour
                     if (currentMedicine == MedicineType.antibiotic && currentCost <= Money)
                     {
                         Money -= currentCost;
+                        animator.SetTrigger("Swallow");
                         rectahead.Recover();
+                        AudioManager.Instance.PlaySwallowSound();
                     }
                     break;
                 case SicknessType.fungi:
@@ -83,6 +83,8 @@ public class MedicineManager : MonoBehaviour
                     {
                         Money -= currentCost;
                         rectahead.Recover();
+                        animator.SetTrigger("Swallow");
+                        AudioManager.Instance.PlaySwallowSound();
                     }
                     break;
                 default:
@@ -96,6 +98,8 @@ public class MedicineManager : MonoBehaviour
             {
                 Money -= currentCost;
                 rectahead.AddImmunity(15);
+                animator.SetTrigger("Pain");
+                AudioManager.Instance.PlayPainSound();
             }
         }
 
@@ -105,6 +109,8 @@ public class MedicineManager : MonoBehaviour
             {
                 Money -= currentCost;
                 rectahead.ImmuneSystemDefense += 35;
+                animator.SetTrigger("Swallow");
+                AudioManager.Instance.PlaySwallowSound();
             }
         }
     }

@@ -6,8 +6,18 @@ public class LevelLoader : MonoBehaviour
     [SerializeField]
     private string levelToLoad;
 
-    public void OnButtonPressed()
+    public void LoadSpecific()
     {
         SceneManager.LoadScene(levelToLoad);
+    }
+
+    public void ReloadLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void LoadNextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
