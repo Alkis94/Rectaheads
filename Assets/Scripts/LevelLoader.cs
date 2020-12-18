@@ -9,15 +9,18 @@ public class LevelLoader : MonoBehaviour
     public void LoadSpecific()
     {
         SceneManager.LoadScene(levelToLoad);
+        Time.timeScale = 1;
     }
 
     public void ReloadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
     }
 
     public void LoadNextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Time.timeScale = 1;
     }
 }

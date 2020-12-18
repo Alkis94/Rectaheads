@@ -283,6 +283,11 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1152734791701168338, guid: 76849520aff43ca4b8ead91006048225,
+        type: 3}
+      propertyPath: TimeLimit
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1636658544254877943, guid: 76849520aff43ca4b8ead91006048225,
         type: 3}
       propertyPath: orthographic
@@ -342,6 +347,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6120433532796789681, guid: 76849520aff43ca4b8ead91006048225,
+        type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6120433532796789681, guid: 76849520aff43ca4b8ead91006048225,
+        type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8302919917270217502, guid: 76849520aff43ca4b8ead91006048225,
         type: 3}
