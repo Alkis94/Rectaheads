@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public static class ExtensionMethods
 {
@@ -26,6 +27,15 @@ public static class ExtensionMethods
         GameObject newObject = GameObject.Instantiate(gameObject, parent) as GameObject;
         newObject.transform.localPosition = localPosition;
         return newObject;
+    }
+
+    public static string NameFromBuildIndex(int BuildIndex)
+    {
+        string path = SceneUtility.GetScenePathByBuildIndex(BuildIndex);
+        int slash = path.LastIndexOf('/');
+        string name = path.Substring(slash + 1);
+        int dot = name.LastIndexOf('.');
+        return name.Substring(0, dot);
     }
 
 }

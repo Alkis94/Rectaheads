@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using Newtonsoft.Json;
 using System.IO;
 using UnityEngine.SceneManagement;

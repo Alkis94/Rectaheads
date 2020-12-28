@@ -46,7 +46,6 @@ public class LevelEndManager : MonoBehaviour
         {
             StartCoroutine(SetActiveWithDelay(0.25f, stars[0]));
             gems += 500;
-            nextButton.SetActive(true);
             starCount++;
         }
 
@@ -69,9 +68,15 @@ public class LevelEndManager : MonoBehaviour
 
         ES3.Save("Stars", starCount, "Save/Levels/" + SceneManager.GetActiveScene().name);
 
-        if(SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCount - 1)
+        if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
         {
-            ES3.Save("Unlocked", true, "Save/Levels/" + SceneManager.GetSceneAt(SceneManager.GetActiveScene().buildIndex + 1).name);
+            Debug.Log("Next scene name :" + ExtensionMethods.NameFromBuildIndex(SceneManager.GetActiveScene().buildIndex + 1));
+            ES3.Save("Unlocked", true, "Save/Levels/" + ExtensionMethods.NameFromBuildIndex(SceneManager.GetActiveScene().buildIndex + 1));
+
+            if(starCount > 0)
+            {
+                nextButton.SetActive(true);
+            }
         }
         
         Time.timeScale = 0;

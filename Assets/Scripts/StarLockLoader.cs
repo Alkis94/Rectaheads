@@ -15,15 +15,19 @@ public class StarLockLoader : MonoBehaviour
     {
         if(ES3.FileExists("Save/Levels/" + level))
         {
-            int starCount = ES3.Load<int>("Stars", "Save/Levels/" + level);
+            int starCount = 0;
+
+            if (ES3.KeyExists("Stars", "Save/Levels/" + level))
+            {
+                starCount = ES3.Load<int>("Stars", "Save/Levels/" + level);
+            }
+            
 
             if(ES3.KeyExists("Unlocked", "Save/Levels/" + level))
             {
                 bool unlocked = ES3.Load<bool>("Unlocked", "Save/Levels/" + level);
-                Debug.Log(unlocked);
                 if (unlocked)
                 {
-                    Debug.Log("Should Unlock");
                     locked.SetActive(false);
                     GetComponent<Button>().interactable = true;
                 }

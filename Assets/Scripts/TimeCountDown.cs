@@ -3,7 +3,6 @@ using UnityEngine;
 using System.Collections;
 using TMPro;
 
-
 public class TimeCountDown : MonoBehaviour
 {
     public static event Action OnCountDownFinished = delegate { };
