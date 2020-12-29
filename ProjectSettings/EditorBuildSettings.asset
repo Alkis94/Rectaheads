@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelSelect.unity
     guid: db6fe5044f06e2749b5917922389bb2f
   - enabled: 1
+    path: Assets/Scenes/TalentTree.unity
+    guid: def814bf8e719e54786feff01cd5e48b
+  - enabled: 1
+    path: Assets/Scenes/Shop.unity
+    guid: cbf5b56d0900dc84fa199378a242c62b
+  - enabled: 1
     path: Assets/Scenes/Village/Village1.unity
     guid: a1f126d74524c0842bbbbec51ca659ef
   - enabled: 1

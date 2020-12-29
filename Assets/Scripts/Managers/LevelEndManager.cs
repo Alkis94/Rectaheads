@@ -45,32 +45,32 @@ public class LevelEndManager : MonoBehaviour
         if(percentageAlive >= 25)
         {
             StartCoroutine(SetActiveWithDelay(0.25f, stars[0]));
-            gems += 500;
+            gems += 25;
             starCount++;
         }
 
         if (percentageAlive >= 50)
         {
             StartCoroutine(SetActiveWithDelay(0.75f, stars[1]));
-            gems += 500;
+            gems += 50;
             starCount++;
         }
 
         if (percentageAlive >= 75)
         {
             StartCoroutine(SetActiveWithDelay(1.25f, stars[2]));
-            gems += 500;
+            gems += 100;
             starCount++;
         }
 
-        gems += rectaheadAlive * 10;
+        gems += rectaheadAlive * 1;
         StartCoroutine(GemCount());
 
         ES3.Save("Stars", starCount, "Save/Levels/" + SceneManager.GetActiveScene().name);
 
         if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
         {
-            Debug.Log("Next scene name :" + ExtensionMethods.NameFromBuildIndex(SceneManager.GetActiveScene().buildIndex + 1));
+            //Debug.Log("Next scene name : " + ExtensionMethods.NameFromBuildIndex(SceneManager.GetActiveScene().buildIndex + 1));
             ES3.Save("Unlocked", true, "Save/Levels/" + ExtensionMethods.NameFromBuildIndex(SceneManager.GetActiveScene().buildIndex + 1));
 
             if(starCount > 0)
@@ -78,7 +78,9 @@ public class LevelEndManager : MonoBehaviour
                 nextButton.SetActive(true);
             }
         }
-        
+
+        GameManager.Instance.Gems += gems;
+
         Time.timeScale = 0;
     }
 

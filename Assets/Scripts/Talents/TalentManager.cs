@@ -48,17 +48,24 @@ public class TalentManager : MonoBehaviour
 
     public void UpgradePressed()
     {
-        if(currentTalent.TalentUpgradeCount < currentTalent.TalentUpgradeMax)
+        if(currentTalent.TalentCost <= GameManager.Instance.Gems)
         {
-            currentTalent.TalentUpgradeCount++;
-            //currentTalent.Effect();
-            talentUpgradeText.text = currentTalent.TalentUpgradeCount.ToString() + " / " + currentTalent.TalentUpgradeMax.ToString();
-        }
+            GameManager.Instance.Gems -= currentTalent.TalentCost;
 
-        if(currentTalent.TalentUpgradeCount == currentTalent.TalentUpgradeMax)
-        {
-            currentTalent.IsMaxed = true;
-            currentTalent.CheckNextForUnlocks();
+            if (currentTalent.TalentUpgradeCount < currentTalent.TalentUpgradeMax)
+            {
+                currentTalent.TalentUpgradeCount++;
+                //currentTalent.Effect();
+                talentUpgradeText.text = currentTalent.TalentUpgradeCount.ToString() + " / " + currentTalent.TalentUpgradeMax.ToString();
+            }
+
+            if (currentTalent.TalentUpgradeCount == currentTalent.TalentUpgradeMax)
+            {
+                currentTalent.IsMaxed = true;
+                currentTalent.CheckNextForUnlocks();
+            }
+
+            ES3.Save("Talent" +currentTalent.TalentID, currentTalent.TalentUpgradeCount, "Save/Talents");
         }
     }
 }

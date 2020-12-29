@@ -1,0 +1,20 @@
+﻿public enum TalentID 
+{
+    tax,
+    sanitizer,
+    medicare,
+    gloves,
+    masks,
+    vaccineEffect,
+    vaccineCost,
+    antibioCost,
+    megaAntibio,
+    emergency,
+    homework,
+    delivery,
+    vitaminCost,
+    vitaminEffect,
+    diet,
+    megaVitamin,
+    education
+}

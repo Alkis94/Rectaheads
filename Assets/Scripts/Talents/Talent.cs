@@ -8,6 +8,8 @@ public class Talent : MonoBehaviour
     public bool IsMaxed { get; set; } = false;
 
     [SerializeField]
+    private TalentID talentID;
+    [SerializeField]
     private string talentName;
     [SerializeField]
     private string talentDescription;
@@ -30,6 +32,18 @@ public class Talent : MonoBehaviour
     [SerializeField]
     private bool requiresAllPrevious = false;
 
+    public TalentID TalentID
+    {
+        get
+        {
+            return talentID;
+        }
+
+        private set
+        {
+            talentID = value;
+        }
+    }
 
     public string TalentName
     {
@@ -97,12 +111,31 @@ public class Talent : MonoBehaviour
         }
     }
 
-
-    void Start()
+    private void Awake()
     {
         button = GetComponent<Button>();
         talentEffect = GetComponent<TalentEffect>();
+    }
+
+    private void Start()
+    {
         talentCostText.text = talentCost.ToString();
+
+        if(ES3.FileExists("Save/Talents"))
+        {
+            if(ES3.KeyExists("Talent" + TalentID, "Save/Talents"))
+            {
+                talentUpgradeCount = ES3.Load<int>("Talent" + TalentID, "Save/Talents");
+            }
+
+            if (TalentUpgradeCount == TalentUpgradeMax)
+            {
+                IsMaxed = true;
+                CheckNextForUnlocks();
+            }
+
+        }
+
         talentUpgradeText.text = talentUpgradeCount.ToString() + " / " + talentUpgradeMax.ToString();
     }
 
@@ -150,7 +183,6 @@ public class Talent : MonoBehaviour
                 }
             }
         }
-
     }
 
 }

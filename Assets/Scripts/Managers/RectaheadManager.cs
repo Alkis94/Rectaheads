@@ -6,7 +6,7 @@ using TMPro;
 public class RectaheadManager : MonoBehaviour
 {
     public static RectaheadManager Instance { get; private set; } = null;
-    public GameObject[,] Rectaheads { get; private set; } 
+    public GameObject[,] Rectaheads { get; private set; }
     [SerializeField]
     private GameObject rectahead;
     [SerializeField]
