@@ -6,7 +6,8 @@ using TMPro;
 public class RectaheadManager : MonoBehaviour
 {
     public static RectaheadManager Instance { get; private set; } = null;
-    public GameObject[,] Rectaheads { get; private set; }
+    public Rectahead[,] Rectaheads { get; private set; }
+    public List<Vector2Int> AliveRectaheadsLocations { get; private set; } =  new List<Vector2Int>();
     [SerializeField]
     private GameObject rectahead;
     [SerializeField]
@@ -27,7 +28,7 @@ public class RectaheadManager : MonoBehaviour
             Instance = this;
         }
 
-        Rectaheads = new GameObject[arraySize.x, arraySize.y];
+        Rectaheads = new Rectahead[arraySize.x, arraySize.y];
         map = MapManager.Instance.Map;
 
         for(int i = 0; i < map.GetLength(0); i += 2)
@@ -56,8 +57,9 @@ public class RectaheadManager : MonoBehaviour
         {
             for (int j = y * 3 ; j < y * 3 + 3; j++)
             {
-                Rectaheads[i, j] = Instantiate(rectahead, ArrayToLevelCoordinates(i, j), Quaternion.identity, transform);
-                Rectaheads[i, j].GetComponent<Rectahead>().Location = new Vector2Int(i, j);
+                Rectaheads[i, j] = Instantiate(rectahead, ArrayToLevelCoordinates(i, j), Quaternion.identity, transform).GetComponent<Rectahead>();
+                Rectaheads[i, j].Location = new Vector2Int(i, j);
+                AliveRectaheadsLocations.Add(new Vector2Int(i, j));
             }
         }
 
@@ -76,5 +78,21 @@ public class RectaheadManager : MonoBehaviour
     {
         RectaheadCurrentCount--;
         rectaheadCount.text = RectaheadCurrentCount + "/" + RectaheadTotalCount;
+    }
+
+    public void RemoveDeadRectahead(Vector2Int location)
+    {
+        AliveRectaheadsLocations.Remove(location);
+    }
+
+    public Rectahead RandomRectahead()
+    {
+        if (AliveRectaheadsLocations.Count <= 0)
+        {
+            return null;
+        }
+
+        Vector2Int randomAliveRectahead = AliveRectaheadsLocations[Random.Range(0, AliveRectaheadsLocations.Count - 1)];
+        return Rectaheads[randomAliveRectahead.x, randomAliveRectahead.y];
     }
 }

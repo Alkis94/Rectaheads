@@ -174,22 +174,24 @@ public class Rectahead : MonoBehaviour
 
             if(IsSick)
             {
-                switch(SicknessType)
+                float sicknessTimeFactor = CalculateSicknessTimeFactor();
+
+                switch (SicknessType)
                 {
                     case SicknessType.virus:
                         ImmuneSystemDefense -= 1f;
-                        SpreadSickness(SicknessType.virus, 20, 5, true, false);
-                        CheckForKill(15, 1);
+                        SicknessManager.Instance.SpreadSickness(Location, SicknessType.virus, 20 * sicknessTimeFactor, 5, SpreadType.cross);
+                        CheckForKill(15 * sicknessTimeFactor, 1 * sicknessTimeFactor);
                         break;
                     case SicknessType.bacteria:
                         ImmuneSystemDefense -= 2;
-                        SpreadSickness(SicknessType.bacteria, 35, 7, true, true);
-                        CheckForKill(30, 3);
+                        SicknessManager.Instance.SpreadSickness(Location, SicknessType.bacteria, 35 * sicknessTimeFactor, 7, SpreadType.square);
+                        CheckForKill(30 * sicknessTimeFactor, 3 * sicknessTimeFactor);
                         break;
                     case SicknessType.fungi:
                         ImmuneSystemDefense -= 3;
-                        SpreadSickness(SicknessType.fungi, 30, 3, false, true);
-                        CheckForKill(5, 0);
+                        SicknessManager.Instance.SpreadSickness(Location, SicknessType.fungi, 30 * sicknessTimeFactor, 3, SpreadType.diagonal);
+                        CheckForKill(5 * sicknessTimeFactor, 0);
                         break;
                     default:
                         break;
@@ -244,9 +246,31 @@ public class Rectahead : MonoBehaviour
         }
     }
 
+    private float CalculateSicknessTimeFactor()
+    {
+        if( timeSick < 3)
+        {
+            return 0;
+        }
+
+        float sicknessStage = timeSick / sicknessDuration;
+
+        if (sicknessStage > 0.25f && sicknessStage < 0.5f )
+        {
+            return 0.5f;
+        }
+
+        if(timeSick / sicknessDuration > 0.5f && sicknessStage < 0.75f)
+        {
+            return 1;
+        }
+
+        return 0.25f;
+    }
+
     private void CheckForKill(float maxKillRoll, float randomKillChance )
     {
-        float randomNumber = Random.Range(0,  Mathf.Sin( Mathf.PI / sicknessDuration * timeSick) * maxKillRoll);
+        float randomNumber = Random.Range(0, maxKillRoll);
         randomNumber = Mathf.Round(randomNumber);
 
         if (randomNumber > immuneSystemDefense)
@@ -287,79 +311,8 @@ public class Rectahead : MonoBehaviour
         }
         StopAllCoroutines();
         spriteRenderer.color = Color.white;
-        SicknessManager.Instance.RemoveDeadRectahead(Location);
+        RectaheadManager.Instance.RemoveDeadRectahead(Location);
         RectaheadManager.Instance.ReduceRectaheadCount();
         AudioManager.Instance.PlayDeathSound();
-    }
-
-    private void SpreadSickness(SicknessType sicknessType, float spreadAttack, float spreadChance, bool spreadSquare, bool spreadCross)
-    {
-
-        spreadAttack *= Mathf.Sin(Mathf.PI / sicknessDuration * timeSick);
-
-        if (Location.x < SicknessManager.Instance.rectaheads.GetLength(0) - 1 && spreadSquare)
-        {
-            if(SicknessManager.Instance.rectaheads[Location.x + 1, Location.y] != null)
-            {
-                SicknessManager.Instance.SicknessAttack(SicknessManager.Instance.rectaheads[Location.x + 1, Location.y], sicknessType, spreadAttack, spreadChance);
-            }
-        }
-
-        if (Location.x > 0 && spreadSquare)
-        {
-            if (SicknessManager.Instance.rectaheads[Location.x - 1, Location.y] != null)
-            {
-                SicknessManager.Instance.SicknessAttack(SicknessManager.Instance.rectaheads[Location.x - 1, Location.y], sicknessType, spreadAttack, spreadChance);
-            }
-        }
-
-        if (Location.y < SicknessManager.Instance.rectaheads.GetLength(1) - 1 && spreadSquare)
-        {
-            if (SicknessManager.Instance.rectaheads[Location.x, Location.y + 1] != null)
-            {
-                SicknessManager.Instance.SicknessAttack(SicknessManager.Instance.rectaheads[Location.x, Location.y + 1], sicknessType, spreadAttack, spreadChance);
-            }
-        }
-
-        if (Location.y > 0 && spreadSquare)
-        {
-            if (SicknessManager.Instance.rectaheads[Location.x, Location.y - 1] != null)
-            {
-                SicknessManager.Instance.SicknessAttack(SicknessManager.Instance.rectaheads[Location.x, Location.y - 1], sicknessType, spreadAttack, spreadChance);
-            }
-        }
-
-        if (Location.x < SicknessManager.Instance.rectaheads.GetLength(0) - 1 && Location.y < SicknessManager.Instance.rectaheads.GetLength(1) - 1 && spreadCross)
-        {
-            if (SicknessManager.Instance.rectaheads[Location.x + 1, Location.y + 1] != null)
-            {
-                SicknessManager.Instance.SicknessAttack(SicknessManager.Instance.rectaheads[Location.x + 1, Location.y + 1], sicknessType, spreadAttack, spreadChance);
-            }
-        }
-
-        if (Location.x < SicknessManager.Instance.rectaheads.GetLength(0) - 1 && Location.y > 0 && spreadCross)
-        {
-            if (SicknessManager.Instance.rectaheads[Location.x + 1, Location.y - 1] != null)
-            {
-                SicknessManager.Instance.SicknessAttack(SicknessManager.Instance.rectaheads[Location.x + 1, Location.y - 1], sicknessType, spreadAttack, spreadChance);
-            }
-        }
-
-        if (Location.x > 0 && Location.y < SicknessManager.Instance.rectaheads.GetLength(1) - 1 && spreadCross)
-        {
-            if (SicknessManager.Instance.rectaheads[Location.x - 1, Location.y + 1] != null)
-            {
-                SicknessManager.Instance.SicknessAttack(SicknessManager.Instance.rectaheads[Location.x - 1, Location.y + 1], sicknessType, spreadAttack, spreadChance);
-            }
-        }
-
-        if (Location.x > 0 && Location.y > 0 && spreadCross)
-        {
-            if (SicknessManager.Instance.rectaheads[Location.x - 1, Location.y - 1] != null)
-            {
-                SicknessManager.Instance.SicknessAttack(SicknessManager.Instance.rectaheads[Location.x - 1, Location.y - 1], sicknessType, spreadAttack, spreadChance);
-            }
-        }
-
     }
 }
