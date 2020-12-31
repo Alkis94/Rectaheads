@@ -5,6 +5,7 @@ using TMPro;
 
 public class LevelEndManager : MonoBehaviour
 {
+    public static LevelEndManager Instance { get; private set; } = null;
 
     private int gems;
     [SerializeField]
@@ -15,16 +16,20 @@ public class LevelEndManager : MonoBehaviour
     private GameObject nextButton;
     [SerializeField]
     private TextMeshProUGUI gemsText;
+    [SerializeField]
+    private TextMeshProUGUI gradeText;
     private AudioSource audioSource;
 
-    private void OnEnable()
+    private void Awake()
     {
-        TimeCountDown.OnCountDownFinished += LevelFinished;
-    }
-
-    private void OnDisable()
-    {
-        TimeCountDown.OnCountDownFinished -= LevelFinished;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
     }
 
     private void Start()
@@ -32,11 +37,9 @@ public class LevelEndManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    private void LevelFinished()
+    public void LevelFinished()
     {
-
         miniMenu.SetActive(true);
-
         int starCount = 0;
         int rectaheadAlive = RectaheadManager.Instance.RectaheadCurrentCount;
         int rectaheadTotal = RectaheadManager.Instance.RectaheadTotalCount;
@@ -63,6 +66,7 @@ public class LevelEndManager : MonoBehaviour
             starCount++;
         }
 
+        GradePerformance(starCount);
         gems += rectaheadAlive * 1;
         StartCoroutine(GemCount());
 
@@ -70,12 +74,10 @@ public class LevelEndManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
         {
-            //Debug.Log("Next scene name : " + ExtensionMethods.NameFromBuildIndex(SceneManager.GetActiveScene().buildIndex + 1));
-            ES3.Save("Unlocked", true, "Save/Levels/" + ExtensionMethods.NameFromBuildIndex(SceneManager.GetActiveScene().buildIndex + 1));
-
             if(starCount > 0)
             {
                 nextButton.SetActive(true);
+                ES3.Save("Unlocked", true, "Save/Levels/" + ExtensionMethods.NameFromBuildIndex(SceneManager.GetActiveScene().buildIndex + 1));
             }
         }
 
@@ -88,10 +90,25 @@ public class LevelEndManager : MonoBehaviour
     {
         audioSource.Play();
 
-        for (int i = 0; i <= gems; i += 10)
+        float countRate;
+
+        if (gems < 10)
+        {
+            countRate = 0.2f;
+        }
+        else if (gems < 100)
+        {
+            countRate = 0.05f;
+        }
+        else
+        {
+            countRate = 0.02f;
+        }
+
+        for (int i = 0; i <= gems; i ++)
         {
             gemsText.text = i.ToString();
-            yield return new WaitForSecondsRealtime(0.02f);
+            yield return new WaitForSecondsRealtime(countRate);
         }
 
         audioSource.Stop();
@@ -101,6 +118,28 @@ public class LevelEndManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(delay);
         someObject.SetActive(true);
+    }
+
+    private void GradePerformance(int stars)
+    {
+        switch(stars)
+        {
+            case 0:
+                gradeText.text = "Try Again";
+                break;
+            case 1:
+                gradeText.text = "Good";
+                break;
+            case 2:
+                gradeText.text = "Excellent";
+                break;
+            case 3:
+                gradeText.text = "Amazing";
+                break;
+            default:
+                gradeText.text = "Error 404";
+                break;
+        }
     }
 
 }

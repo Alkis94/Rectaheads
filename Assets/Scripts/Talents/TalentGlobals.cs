@@ -1,19 +1,20 @@
 ﻿
 public static class TalentGlobals 
 {
-    public static int Money { get; private set; } = 0;
-    public static int AntibioCost { get; private set; } = 0;
-    public static int FungiCost { get; private set; } = 0;
-    public static int VaccineCost { get; private set; } = 0;
-    public static int VitaminCost { get; private set; } = 0;
+    
+    public static int AntibioDiscount { get; private set; } = 0;
+    public static int AntifungalDiscount { get; private set; } = 0;
+    public static int VaccineDiscount { get; private set; } = 0;
+    public static int VitaminDiscount { get; private set; } = 0;
 
-    public static float VaccineEffect { get; private set; } = 0;
-    public static float VitaminEffect { get; private set; } = 0;
-    public static float StartImmuneDefense { get; private set; } = 0;
+    public static int ExtraMoney { get; private set; } = 0;
+    public static float ExtraVaccineEffect { get; private set; } = 0;
+    public static float ExtraVitaminEffect { get; private set; } = 0;
+    public static float ExtraImmuneDefense { get; private set; } = 0;
 
-    public static float VirusSpreadChance { get; private set; } = 0;
-    public static float BacteriaSpreadChance { get; private set; } = 0;
-    public static float FungiSpreadChance { get; private set; } = 0;
+    public static float VirusSpreadReduction { get; private set; } = 0;
+    public static float BacteriaSpreadReduction { get; private set; } = 0;
+    public static float FungiSpreadReduction { get; private set; } = 0;
 
     public static bool EmergencyActive { get; private set; } = false;
     public static bool MegaAntibioActive { get; private set; } = false;
@@ -24,34 +25,42 @@ public static class TalentGlobals
     {
         if(ES3.FileExists("Save/TalentGlobals"))
         {
-            Money = ES3.Load<int>("Money", "Save/TalentGlobals");
-            AntibioCost = ES3.Load<int>("AntibioCost", "Save/TalentGlobals");
-            FungiCost = ES3.Load<int>("FungiCost", "Save/TalentGlobals");
-            VaccineCost = ES3.Load<int>("VaccineCost", "Save/TalentGlobals");
-            VitaminCost = ES3.Load<int>("VitaminCost", "Save/TalentGlobals");
-            VaccineEffect = ES3.Load<float>("VaccineEffect", "Save/TalentGlobals");
-            VitaminEffect = ES3.Load<float>("VitaminEffect", "Save/TalentGlobals");
-            StartImmuneDefense = ES3.Load<float>("StartImmuneDefense", "Save/TalentGlobals");
-            VirusSpreadChance = ES3.Load<float>("VirusSpreadChance", "Save/TalentGlobals");
-            BacteriaSpreadChance = ES3.Load<float>("BacteriaSpreadChance", "Save/TalentGlobals");
-            FungiSpreadChance = ES3.Load<float>("FungiSpreadChance", "Save/TalentGlobals");
+
+            AntibioDiscount = ES3.Load<int>("AntibioDiscount", "Save/TalentGlobals");
+            AntifungalDiscount = ES3.Load<int>("AntifungalDiscount", "Save/TalentGlobals");
+            VaccineDiscount = ES3.Load<int>("VaccineDiscount", "Save/TalentGlobals");
+            VitaminDiscount = ES3.Load<int>("VitaminDiscount", "Save/TalentGlobals");
+
+            ExtraMoney = ES3.Load<int>("ExtraMoney", "Save/TalentGlobals");
+            ExtraVaccineEffect = ES3.Load<float>("ExtraVaccineEffect", "Save/TalentGlobals");
+            ExtraVitaminEffect = ES3.Load<float>("ExtraVitaminEffect", "Save/TalentGlobals");
+            ExtraImmuneDefense = ES3.Load<float>("ExtraImmuneDefense", "Save/TalentGlobals");
+
+            VirusSpreadReduction = ES3.Load<float>("VirusSpreadReduction", "Save/TalentGlobals");
+            BacteriaSpreadReduction = ES3.Load<float>("BacteriaSpreadReduction", "Save/TalentGlobals");
+            FungiSpreadReduction = ES3.Load<float>("FungiSpreadReduction", "Save/TalentGlobals");
+
             EmergencyActive = ES3.Load<bool>("EmergencyActive", "Save/TalentGlobals");
             MegaAntibioActive = ES3.Load<bool>("MegaAntibioActive", "Save/TalentGlobals");
             MegaVitaminActive = ES3.Load<bool>("MegaVitaminActive", "Save/TalentGlobals");
         }
         else
         {
-            ES3.Save("Money", Money, "Save/TalentGlobals");
-            ES3.Save("AntibioCost", AntibioCost, "Save/TalentGlobals");
-            ES3.Save("FungiCost", FungiCost, "Save/TalentGlobals");
-            ES3.Save("VaccineCost", VaccineCost, "Save/TalentGlobals");
-            ES3.Save("VitaminCost", VitaminCost, "Save/TalentGlobals");
-            ES3.Save("VaccineEffect", VaccineEffect, "Save/TalentGlobals");
-            ES3.Save("VitaminEffect", VitaminEffect, "Save/TalentGlobals");
-            ES3.Save("StartImmuneDefense", StartImmuneDefense, "Save/TalentGlobals");
-            ES3.Save("VirusSpreadChance", VirusSpreadChance, "Save/TalentGlobals");
-            ES3.Save("BacteriaSpreadChance", BacteriaSpreadChance, "Save/TalentGlobals");
-            ES3.Save("FungiSpreadChance", FungiSpreadChance, "Save/TalentGlobals");
+            
+            ES3.Save("AntibioDiscount", AntibioDiscount, "Save/TalentGlobals");
+            ES3.Save("AntifungalDiscount", AntifungalDiscount, "Save/TalentGlobals");
+            ES3.Save("VaccineDiscount", VaccineDiscount, "Save/TalentGlobals");
+            ES3.Save("VitaminDiscount", VitaminDiscount, "Save/TalentGlobals");
+
+            ES3.Save("ExtraMoney", ExtraMoney, "Save/TalentGlobals");
+            ES3.Save("ExtraVaccineEffect", ExtraVaccineEffect, "Save/TalentGlobals");
+            ES3.Save("ExtraVitaminEffect", ExtraVitaminEffect, "Save/TalentGlobals");
+            ES3.Save("ExtraImmuneDefense", ExtraImmuneDefense, "Save/TalentGlobals");
+
+            ES3.Save("VirusSpreadReduction", VirusSpreadReduction, "Save/TalentGlobals");
+            ES3.Save("BacteriaSpreadReduction", BacteriaSpreadReduction, "Save/TalentGlobals");
+            ES3.Save("FungiSpreadReduction", FungiSpreadReduction, "Save/TalentGlobals");
+
             ES3.Save("EmergencyActive", EmergencyActive, "Save/TalentGlobals");
             ES3.Save("MegaAntibioActive", MegaAntibioActive, "Save/TalentGlobals");
             ES3.Save("MegaVitaminActive", MegaVitaminActive, "Save/TalentGlobals");
@@ -59,71 +68,84 @@ public static class TalentGlobals
         
     }
 
-    public static void  ChangeMoney(int money)
+   
+
+    public static void ChangeAntibioDiscount(int discount)
     {
-        Money += money;
-        ES3.Save("Money", Money, "Save/TalentGlobals");
+        AntibioDiscount += discount;
+        ES3.Save("AntibioDiscount", AntibioDiscount, "Save/TalentGlobals");
     }
 
-    public static void ChangeAntibioCost(int cost)
+    public static void ChangeAntifungalDiscount(int discount)
     {
-        AntibioCost += cost;
-        ES3.Save("AntibioCost", AntibioCost, "Save/TalentGlobals");
+        AntifungalDiscount += discount;
+        ES3.Save("AntifungalDiscount", AntifungalDiscount, "Save/TalentGlobals");
     }
 
-    public static void ChangeFungiCost(int cost)
+    public static void ChangeVaccineDiscount(int discount)
     {
-        FungiCost += cost;
-        ES3.Save("FungiCost", FungiCost, "Save/TalentGlobals");
+        VaccineDiscount += discount;
+        ES3.Save("VaccineDiscount", VaccineDiscount, "Save/TalentGlobals");
     }
 
-    public static void ChangeVaccineCost(int cost)
+    public static void ChangeVitaminDiscount(int discount)
     {
-        VaccineCost += cost;
-        ES3.Save("VaccineCost", VaccineCost, "Save/TalentGlobals");
+        VitaminDiscount += discount;
+        ES3.Save("VitaminDiscount", VitaminDiscount, "Save/TalentGlobals");
     }
 
-    public static void ChangeVitaminCost(int cost)
+
+
+
+    public static void ChangeExtraMoney(int money)
     {
-        VitaminCost += cost;
-        ES3.Save("VitaminCost", VitaminCost, "Save/TalentGlobals");
+        ExtraMoney += money;
+        ES3.Save("Money", ExtraMoney, "Save/TalentGlobals");
     }
 
-    public static void ChangeVaccineEffect(float effect)
+    public static void ChangeExtraVaccineEffect(float effect)
     {
-        VaccineEffect += effect;
-        ES3.Save("VaccineEffect", VaccineEffect, "Save/TalentGlobals");
+        ExtraVaccineEffect += effect;
+        ES3.Save("ExtraVaccineEffect", ExtraVaccineEffect, "Save/TalentGlobals");
     }
 
-    public static void ChangeVitaminEffect(float effect)
+    public static void ChangeExtraVitaminEffect(float effect)
     {
-        VitaminEffect += effect;
-        ES3.Save("VitaminEffect", VitaminEffect, "Save/TalentGlobals");
+        ExtraVitaminEffect += effect;
+        ES3.Save("ExtraVitaminEffect", ExtraVitaminEffect, "Save/TalentGlobals");
     }
 
-    public static void ChangeStartImmuneDefense(float defense)
+    public static void ChangeExtraImmuneDefense(float defense)
     {
-        StartImmuneDefense += defense;
-        ES3.Save("StartImmuneDefense", StartImmuneDefense, "Save/TalentGlobals");
+        ExtraImmuneDefense += defense;
+        ES3.Save("ExtraImmuneDefense", ExtraImmuneDefense, "Save/TalentGlobals");
     }
 
-    public static void ChangeVirusSpreadChance(float spreadChance)
+
+
+
+
+    public static void ChangeVirusSpreadReduction(float spreadReduction)
     {
-        VirusSpreadChance += spreadChance;
-        ES3.Save("VirusSpreadChance", VirusSpreadChance, "Save/TalentGlobals");
+        VirusSpreadReduction += spreadReduction;
+        ES3.Save("VirusSpreadReduction", VirusSpreadReduction, "Save/TalentGlobals");
     }
 
-    public static void ChangeBacteriaSpreadChance(float spreadChance)
+    public static void ChangeBacteriaSpreadReduction(float spreadReduction)
     {
-        BacteriaSpreadChance += spreadChance;
-        ES3.Save("BacteriaSpreadChance", BacteriaSpreadChance, "Save/TalentGlobals");
+        BacteriaSpreadReduction += spreadReduction;
+        ES3.Save("BacteriaSpreadReduction", BacteriaSpreadReduction, "Save/TalentGlobals");
     }
 
-    public static void ChangeFungiSpreadChance(float spreadChance)
+    public static void ChangeFungiSpreadReduction(float spreadReduction)
     {
-        FungiSpreadChance += spreadChance;
-        ES3.Save("FungiSpreadChance", FungiSpreadChance, "Save/TalentGlobals");
+        FungiSpreadReduction += spreadReduction;
+        ES3.Save("FungiSpreadReduction", FungiSpreadReduction, "Save/TalentGlobals");
     }
+
+
+
+
 
     public static void ActivateEmergency()
     {

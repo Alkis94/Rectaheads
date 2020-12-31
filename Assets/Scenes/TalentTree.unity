@@ -127,7 +127,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1254247889}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 327968121}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a11730a20cb90994fab049fb50514102, type: 3}
@@ -270,7 +270,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1787914424}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1358857280}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a11730a20cb90994fab049fb50514102, type: 3}
@@ -343,16 +343,52 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1156414013}
+--- !u!1 &124444009 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 305064123471676702, guid: 98a2349eae6d63740b3cc88fe37de7ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 835105584}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &124444010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124444009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08292a5cc39ea75499907495679a2ada, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &179400932 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
     type: 3}
   m_PrefabInstance: {fileID: 1249140579}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1640089567}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a11730a20cb90994fab049fb50514102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &214757328 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 305064123471676702, guid: 98a2349eae6d63740b3cc88fe37de7ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1558775972}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &214757329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214757328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef55b6f44396b0148b7841e5ee9593af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &228628706 stripped
@@ -361,7 +397,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1106362916}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 565002462}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a11730a20cb90994fab049fb50514102, type: 3}
@@ -509,6 +545,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e6610413dc2e6a42b4c86921a45506d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &309181694 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 305064123471676702, guid: 98a2349eae6d63740b3cc88fe37de7ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1331804304}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &309181695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309181694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3f830b0f4a85c244a8f8e5eb7fd7147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &315355673 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 305064123471676702, guid: 98a2349eae6d63740b3cc88fe37de7ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1675232808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &315355674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315355673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c7f7f8d6ed5a1f4f86a285c48fdcfb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &327968121 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 305064123471676702, guid: 98a2349eae6d63740b3cc88fe37de7ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1254247889}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &327968122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327968121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bf1ffa8e3c4316488b50f6d88757699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &334217243
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -539,7 +629,8 @@ PrefabInstance:
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
       propertyPath: talentDescription
-      value: All citizens are required to wear gloves.  Reduces spread chance.
+      value: All citizens are required to wear gloves.  Reduces all types of disease
+        spread chance.
       objectReference: {fileID: 0}
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
@@ -705,16 +796,52 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 334217243}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &351611477 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 305064123471676702, guid: 98a2349eae6d63740b3cc88fe37de7ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1121500998}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &351611478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351611477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21886a8ca8fb50d44a7d2582599d7e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &375509221 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
     type: 3}
   m_PrefabInstance: {fileID: 1558775972}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 214757328}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a11730a20cb90994fab049fb50514102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &406770730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 305064123471676702, guid: 98a2349eae6d63740b3cc88fe37de7ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 305064124195919275}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &406770731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406770730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7cf32c05de6ff64ca8c935877444ec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &460757745
@@ -742,7 +869,7 @@ PrefabInstance:
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
       propertyPath: talentDescription
-      value: Each rank increases the effectiveness of vitamins by 2.
+      value: Each rank increases the effectiveness of vitamins by 3.
       objectReference: {fileID: 0}
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
@@ -909,7 +1036,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 791008865}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 736421096}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a11730a20cb90994fab049fb50514102, type: 3}
@@ -1224,6 +1351,42 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 539669099}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &565002462 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 305064123471676702, guid: 98a2349eae6d63740b3cc88fe37de7ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1106362916}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &565002463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565002462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd11c6a9abeac2148b5320b284cc0794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &641941699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 305064123471676702, guid: 98a2349eae6d63740b3cc88fe37de7ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 334217243}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &641941700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641941699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df921fc647c60f34e9e60bc2edd7f2ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &711401990
 GameObject:
   m_ObjectHideFlags: 0
@@ -1256,6 +1419,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &736421096 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 305064123471676702, guid: 98a2349eae6d63740b3cc88fe37de7ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 791008865}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &736421097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736421096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4bc8192552af914ba3d5dc0d22de49d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &756309364
 GameObject:
   m_ObjectHideFlags: 0
@@ -1395,7 +1576,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1337971599}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2053578508}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a11730a20cb90994fab049fb50514102, type: 3}
@@ -1675,7 +1856,8 @@ PrefabInstance:
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
       propertyPath: talentDescription
-      value: Citizens can only shop online and order delivery. Reduces spread chance.
+      value: Citizens can only shop online and order delivery. Reduces all types
+        of disease spread chance.
       objectReference: {fileID: 0}
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
@@ -2027,7 +2209,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 460757745}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1328056951}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a11730a20cb90994fab049fb50514102, type: 3}
@@ -2507,6 +2689,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1073265927}
   m_CullTransparentMesh: 0
+--- !u!1 &1084713755 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 305064123471676702, guid: 98a2349eae6d63740b3cc88fe37de7ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1716221419}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1084713756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084713755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47478364fa14ca74f8fc919b08461c76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1106362916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2537,7 +2737,8 @@ PrefabInstance:
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
       propertyPath: talentDescription
-      value: Teachs citizens about pandemics. Reduces spread chance.
+      value: Teachs citizens about pandemics. Reduces all types of disease spread
+        chance.
       objectReference: {fileID: 0}
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
@@ -3037,7 +3238,8 @@ PrefabInstance:
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
       propertyPath: talentDescription
-      value: Citizens are required to work from home. Reduces spread chance.
+      value: Citizens are required to work from home. Reduces all types of disease
+        spread chance.
       objectReference: {fileID: 0}
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
@@ -3400,10 +3602,28 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1121500998}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 351611477}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a11730a20cb90994fab049fb50514102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1328056951 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 305064123471676702, guid: 98a2349eae6d63740b3cc88fe37de7ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 460757745}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1328056952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328056951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c7f7f8d6ed5a1f4f86a285c48fdcfb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1329298491 stripped
@@ -3412,7 +3632,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 334217243}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 641941699}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a11730a20cb90994fab049fb50514102, type: 3}
@@ -3785,13 +4005,31 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1337971599}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1358857280 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 305064123471676702, guid: 98a2349eae6d63740b3cc88fe37de7ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1787914424}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1358857281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358857280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de1791f398e080549b612454c46066c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1479530003 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
     type: 3}
   m_PrefabInstance: {fileID: 1331804304}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 309181694}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a11730a20cb90994fab049fb50514102, type: 3}
@@ -3803,7 +4041,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1675232808}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 315355673}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a11730a20cb90994fab049fb50514102, type: 3}
@@ -3996,7 +4234,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 835105584}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 124444009}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a11730a20cb90994fab049fb50514102, type: 3}
@@ -4014,7 +4252,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 305064124195919275}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 406770730}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a11730a20cb90994fab049fb50514102, type: 3}
@@ -4026,6 +4264,24 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5329950379056021209}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1640089567 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 305064123471676702, guid: 98a2349eae6d63740b3cc88fe37de7ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1249140579}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1640089568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640089567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c7fee6fe6eccd4abc53aa5ecc7f7b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1675232808
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4227,7 +4483,7 @@ PrefabInstance:
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
       propertyPath: talentDescription
-      value: Each rank decreases vaccine cost by 10.
+      value: Each rank decreases vaccine cost by 8.
       objectReference: {fileID: 0}
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
@@ -4512,7 +4768,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 539669099}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1997075366}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a11730a20cb90994fab049fb50514102, type: 3}
@@ -4543,12 +4799,12 @@ PrefabInstance:
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
       propertyPath: talentUpgradeMax
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
       propertyPath: talentDescription
-      value: Reduces treatment costs. Each rank decreases costs by 2.
+      value: Reduces all medicine costs.
       objectReference: {fileID: 0}
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
@@ -4715,7 +4971,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1716221419}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1084713755}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a11730a20cb90994fab049fb50514102, type: 3}
@@ -4727,10 +4983,28 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 952096284}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1855034707}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a11730a20cb90994fab049fb50514102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1855034707 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 305064123471676702, guid: 98a2349eae6d63740b3cc88fe37de7ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 952096284}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1855034708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855034707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dbce995ad00e454bb12c6218039dabc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1895868998
@@ -4807,6 +5081,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1895868998}
   m_CullTransparentMesh: 0
+--- !u!1 &1997075366 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 305064123471676702, guid: 98a2349eae6d63740b3cc88fe37de7ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 539669099}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1997075367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997075366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3891f0ca1e568fc4db29ee2467e90160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &2053578508 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 305064123471676702, guid: 98a2349eae6d63740b3cc88fe37de7ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1337971599}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2053578509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053578508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aae8f2a051c98b345a56272d80f1ede6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2063137241
 GameObject:
   m_ObjectHideFlags: 0

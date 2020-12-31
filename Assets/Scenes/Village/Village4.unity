@@ -286,7 +286,7 @@ PrefabInstance:
     - target: {fileID: 1152734791701168338, guid: 76849520aff43ca4b8ead91006048225,
         type: 3}
       propertyPath: TimeLimit
-      value: 10
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 1636658544254877943, guid: 76849520aff43ca4b8ead91006048225,
         type: 3}
@@ -347,6 +347,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5233029193801012758, guid: 76849520aff43ca4b8ead91006048225,
+        type: 3}
+      propertyPath: m_IsOn
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8302919917270217502, guid: 76849520aff43ca4b8ead91006048225,
         type: 3}

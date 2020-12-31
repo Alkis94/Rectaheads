@@ -5,7 +5,6 @@ using TMPro;
 
 public class TimeCountDown : MonoBehaviour
 {
-    public static event Action OnCountDownFinished = delegate { };
     [SerializeField]
     private int TimeLimit = 300;
     private TextMeshProUGUI timeText;
@@ -31,8 +30,8 @@ public class TimeCountDown : MonoBehaviour
 
             if (timeLeft <= 0)
             {
+                LevelEndManager.Instance.LevelFinished();
                 timeText.text = "00:00";
-                OnCountDownFinished?.Invoke();
                 break;
             }
 

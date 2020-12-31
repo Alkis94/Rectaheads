@@ -33,20 +33,20 @@ public class SicknessManager : MonoBehaviour
         {
             if(Time.time > virusCooldown)
             {
-                SicknessAttack(RectaheadManager.Instance.RandomRectahead(), SicknessType.virus, 40, 3);
+                SicknessAttack(RectaheadManager.Instance.RandomAliveRectahead(), SicknessType.virus, 40, 3);
                 virusCooldown = Time.time + 30;
             }
 
             if (Time.time > bacteriaCooldown)
             {
-                SicknessAttack(RectaheadManager.Instance.RandomRectahead(), SicknessType.bacteria, 70, 7);
+                SicknessAttack(RectaheadManager.Instance.RandomAliveRectahead(), SicknessType.bacteria, 70, 7);
                 bacteriaCooldown = Time.time + 15;
             }
 
 
             if (Time.time > fungiCooldown)
             {
-                SicknessAttack(RectaheadManager.Instance.RandomRectahead(), SicknessType.fungi, 60, 5);
+                SicknessAttack(RectaheadManager.Instance.RandomAliveRectahead(), SicknessType.fungi, 60, 5);
                 fungiCooldown = Time.time + 20;
             }
 

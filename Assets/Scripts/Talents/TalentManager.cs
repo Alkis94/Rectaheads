@@ -55,7 +55,7 @@ public class TalentManager : MonoBehaviour
             if (currentTalent.TalentUpgradeCount < currentTalent.TalentUpgradeMax)
             {
                 currentTalent.TalentUpgradeCount++;
-                //currentTalent.Effect();
+                currentTalent.Effect();
                 talentUpgradeText.text = currentTalent.TalentUpgradeCount.ToString() + " / " + currentTalent.TalentUpgradeMax.ToString();
             }
 

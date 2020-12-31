@@ -9,7 +9,7 @@ public class RectaheadManager : MonoBehaviour
     public Rectahead[,] Rectaheads { get; private set; }
     public List<Vector2Int> AliveRectaheadsLocations { get; private set; } =  new List<Vector2Int>();
     [SerializeField]
-    private GameObject rectahead;
+    private List<GameObject> rectaheadVariants;
     [SerializeField]
     private Vector2Int arraySize;
     private int[,] map;
@@ -57,7 +57,7 @@ public class RectaheadManager : MonoBehaviour
         {
             for (int j = y * 3 ; j < y * 3 + 3; j++)
             {
-                Rectaheads[i, j] = Instantiate(rectahead, ArrayToLevelCoordinates(i, j), Quaternion.identity, transform).GetComponent<Rectahead>();
+                Rectaheads[i, j] = Instantiate(RandomRectaheadVariant(), ArrayToLevelCoordinates(i, j), Quaternion.identity, transform).GetComponent<Rectahead>();
                 Rectaheads[i, j].Location = new Vector2Int(i, j);
                 AliveRectaheadsLocations.Add(new Vector2Int(i, j));
             }
@@ -78,6 +78,11 @@ public class RectaheadManager : MonoBehaviour
     {
         RectaheadCurrentCount--;
         rectaheadCount.text = RectaheadCurrentCount + "/" + RectaheadTotalCount;
+
+        if( RectaheadCurrentCount  * 100 / RectaheadTotalCount < 25)
+        {
+            LevelEndManager.Instance.LevelFinished();
+        }
     }
 
     public void RemoveDeadRectahead(Vector2Int location)
@@ -85,7 +90,7 @@ public class RectaheadManager : MonoBehaviour
         AliveRectaheadsLocations.Remove(location);
     }
 
-    public Rectahead RandomRectahead()
+    public Rectahead RandomAliveRectahead()
     {
         if (AliveRectaheadsLocations.Count <= 0)
         {
@@ -94,5 +99,11 @@ public class RectaheadManager : MonoBehaviour
 
         Vector2Int randomAliveRectahead = AliveRectaheadsLocations[Random.Range(0, AliveRectaheadsLocations.Count - 1)];
         return Rectaheads[randomAliveRectahead.x, randomAliveRectahead.y];
+    }
+
+    private GameObject RandomRectaheadVariant ()
+    {
+        int randomNumber = Random.Range(0, rectaheadVariants.Count);
+        return rectaheadVariants[randomNumber];
     }
 }

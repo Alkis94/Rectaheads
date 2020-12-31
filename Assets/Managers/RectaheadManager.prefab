@@ -43,5 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9b536fad05435a47ab5ff13d8cb0c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rectahead: {fileID: 1079044010419869018, guid: 3c297f4bea53b194da55a012e97d75e0,
-    type: 3}
+  rectaheadVariants:
+  - {fileID: 1079044010419869018, guid: 3c297f4bea53b194da55a012e97d75e0, type: 3}
+  - {fileID: 5060088056492810124, guid: 62327caa2556b914b87a470ffffc6bf2, type: 3}
+  - {fileID: 2885382231482439936, guid: ef5dd650ad446ba42a34884b150b2f81, type: 3}
+  - {fileID: 8237928047223743540, guid: fc8fea5267b0ca64eb358a7b0d556aea, type: 3}
+  arraySize: {x: 30, y: 12}

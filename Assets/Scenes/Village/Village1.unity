@@ -417,6 +417,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 4790456455660229652, guid: 76849520aff43ca4b8ead91006048225,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6120433532796789681, guid: 76849520aff43ca4b8ead91006048225,
         type: 3}
       propertyPath: m_UseSpriteMesh
