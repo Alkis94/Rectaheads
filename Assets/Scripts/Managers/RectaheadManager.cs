@@ -11,6 +11,8 @@ public class RectaheadManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> rectaheadVariants;
     [SerializeField]
+    private GameObject[] lockedRectaheadVariants = new GameObject [30];
+    [SerializeField]
     private Vector2Int arraySize;
     private int[,] map;
     private TextMeshProUGUI rectaheadCount;
@@ -26,6 +28,11 @@ public class RectaheadManager : MonoBehaviour
         else
         {
             Instance = this;
+        }
+
+        for(int i = 0; i < GameManager.Instance.UnlockedRectaheadIDs.Count; i++)
+        {
+            rectaheadVariants.Add(lockedRectaheadVariants[GameManager.Instance.UnlockedRectaheadIDs[i] - 16]);
         }
 
         Rectaheads = new Rectahead[arraySize.x, arraySize.y];

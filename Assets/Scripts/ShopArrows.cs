@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelSelectArrows : MonoBehaviour
+public class ShopArrows : MonoBehaviour
 {
     [SerializeField]
-    private RectTransform firstLevels;
+    private RectTransform rectaheads30;
     [SerializeField]
-    private RectTransform secondLevels;
+    private RectTransform rectaheads45;
     [SerializeField]
     private Button leftArrow;
     [SerializeField]
@@ -14,16 +14,16 @@ public class LevelSelectArrows : MonoBehaviour
 
     public void OnLeftPressed()
     {
-        LeanTween.moveX(firstLevels, -600, 0.5f);
-        LeanTween.moveX(secondLevels, 0, 0.5f);
+        LeanTween.moveX(rectaheads30, -600, 0.75f);
+        LeanTween.moveX(rectaheads45, 0, 0.75f);
         leftArrow.interactable = false;
         rightArrow.interactable = true;
     }
 
     public void OnRightPressed()
     {
-        LeanTween.moveX(firstLevels, 0, 0.5f);
-        LeanTween.moveX(secondLevels, 600, 0.5f);
+        LeanTween.moveX(rectaheads30, 0, 0.75f);
+        LeanTween.moveX(rectaheads45, 600, 0.75f);
         rightArrow.interactable = false;
         leftArrow.interactable = true;
     }

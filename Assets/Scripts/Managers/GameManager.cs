@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -8,9 +8,38 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get; private set; } = null;
 
-    
+    public List<int> UnlockedRectaheadIDs { get; set; } = new List<int>();
+    public bool[] IsRectaheadUnlocked { get; set; } = new bool[30];
+
     private int gems = 95000;
     private TextMeshProUGUI gemsText;
+
+    public int Gems
+    {
+        get
+        {
+            return gems;
+        }
+
+        set
+        {
+            if (value > 0)
+            {
+                gems = value;
+            }
+            else
+            {
+                gems = 0;
+            }
+
+            if (gemsText != null)
+            {
+                gemsText.text = Gems.ToString();
+            }
+
+            ES3.Save("Gems", gems, "Save/General");
+        }
+    }
 
     void Awake()
     {
@@ -40,9 +69,19 @@ public class GameManager : MonoBehaviour
                 Gems = ES3.Load<int>("Gems", "Save/General");
             }
         }
+
+        if (ES3.FileExists("Save/Shop"))
+        {
+            string[] keys = ES3.GetKeys("Save/Shop");
+
+            for (int i = 0; i < keys.Length; i++)
+            {
+                int rectaheadID = ES3.Load<int>(keys[i], "Save/Shop");
+                IsRectaheadUnlocked[rectaheadID - 16] = true;
+                UnlockedRectaheadIDs.Add(rectaheadID);
+            }
+        }
     }
-
-
 
     private void OnEnable()
     {
@@ -52,33 +91,6 @@ public class GameManager : MonoBehaviour
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    public int Gems
-    {
-        get
-        {
-            return gems;
-        }
-
-        set
-        {
-            if(value > 0)
-            {
-                gems = value;
-            }
-            else
-            {
-                gems = 0;
-            }
-
-            if(gemsText != null)
-            {
-                gemsText.text = Gems.ToString();
-            }
-
-            ES3.Save("Gems", gems, "Save/General");
-        }
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
