@@ -1,17 +1,20 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+    private AudioMixer audioMixer;
 
     public static GameManager Instance { get; private set; } = null;
 
     public List<int> UnlockedRectaheadIDs { get; set; } = new List<int>();
     public bool[] IsRectaheadUnlocked { get; set; } = new bool[30];
 
-    private int gems = 95000;
+    private int gems = 0;
     private TextMeshProUGUI gemsText;
 
     public int Gems
@@ -61,26 +64,9 @@ public class GameManager : MonoBehaviour
         }
 
         TalentGlobals.LoadTalentGlobals();
+        LoadUnlockedRectaheads();
+        LoadOptions();
 
-        if(ES3.FileExists("Save/General"))
-        {
-            if(ES3.KeyExists("Gems", "Save/General"))
-            {
-                Gems = ES3.Load<int>("Gems", "Save/General");
-            }
-        }
-
-        if (ES3.FileExists("Save/Shop"))
-        {
-            string[] keys = ES3.GetKeys("Save/Shop");
-
-            for (int i = 0; i < keys.Length; i++)
-            {
-                int rectaheadID = ES3.Load<int>(keys[i], "Save/Shop");
-                IsRectaheadUnlocked[rectaheadID - 16] = true;
-                UnlockedRectaheadIDs.Add(rectaheadID);
-            }
-        }
     }
 
     private void OnEnable()
@@ -105,6 +91,45 @@ public class GameManager : MonoBehaviour
         if(gemsText != null)
         {
             gemsText.text = Gems.ToString();
+        }
+    }
+
+    private void LoadOptions()
+    {
+        if (ES3.FileExists("Save/General"))
+        {
+            if (ES3.KeyExists("Gems", "Save/General"))
+            {
+                Gems = ES3.Load<int>("Gems", "Save/General");
+            }
+
+            if (ES3.KeyExists("MusicVolume", "Save/General"))
+            {
+                float musicVolume = ES3.Load<float>("MusicVolume", "Save/General");
+                audioMixer.SetFloat("Music", musicVolume);
+            }
+
+            if (ES3.KeyExists("SoundEffectsVolume", "Save/General"))
+            {
+                float soundeffectsVolume = ES3.Load<float>("SoundEffectsVolume", "Save/General");
+                audioMixer.SetFloat("SoundEffects", soundeffectsVolume);
+
+            }
+        }
+    }
+
+    private void LoadUnlockedRectaheads()
+    {
+        if (ES3.FileExists("Save/Shop"))
+        {
+            string[] keys = ES3.GetKeys("Save/Shop");
+
+            for (int i = 0; i < keys.Length; i++)
+            {
+                int rectaheadID = ES3.Load<int>(keys[i], "Save/Shop");
+                IsRectaheadUnlocked[rectaheadID - 16] = true;
+                UnlockedRectaheadIDs.Add(rectaheadID);
+            }
         }
     }
 

@@ -14,7 +14,7 @@ public class ShopArrows : MonoBehaviour
 
     public void OnLeftPressed()
     {
-        LeanTween.moveX(rectaheads30, -600, 0.75f);
+        LeanTween.moveX(rectaheads30, -260, 0.75f);
         LeanTween.moveX(rectaheads45, 0, 0.75f);
         leftArrow.interactable = false;
         rightArrow.interactable = true;
@@ -23,7 +23,7 @@ public class ShopArrows : MonoBehaviour
     public void OnRightPressed()
     {
         LeanTween.moveX(rectaheads30, 0, 0.75f);
-        LeanTween.moveX(rectaheads45, 600, 0.75f);
+        LeanTween.moveX(rectaheads45, 260, 0.75f);
         rightArrow.interactable = false;
         leftArrow.interactable = true;
     }
