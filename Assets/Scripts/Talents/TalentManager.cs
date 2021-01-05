@@ -31,13 +31,15 @@ public class TalentManager : MonoBehaviour
         }
     }
 
-    void Start()
+    public void OnPointerEnter()
     {
-
+        AudioManager.Instance.PlayMouseOverSound();
     }
+
 
     public void TalentPressed(Talent talent)
     {
+        AudioManager.Instance.PlayButtonClickSound();
         currentTalent = talent;
         talentMenu.SetActive(true);
         talentName.text = currentTalent.TalentName;
@@ -48,8 +50,9 @@ public class TalentManager : MonoBehaviour
 
     public void UpgradePressed()
     {
-        if(currentTalent.TalentCost <= GameManager.Instance.Gems)
+        if(currentTalent.TalentCost <= GameManager.Instance.Gems && !currentTalent.IsMaxed)
         {
+            AudioManager.Instance.PlayButtonClickSound();
             GameManager.Instance.Gems -= currentTalent.TalentCost;
 
             if (currentTalent.TalentUpgradeCount < currentTalent.TalentUpgradeMax)

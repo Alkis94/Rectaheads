@@ -48,26 +48,26 @@ public class LevelEndManager : MonoBehaviour
         if(percentageAlive >= 25)
         {
             StartCoroutine(SetActiveWithDelay(0.25f, stars[0]));
-            gems += 25;
+            gems += 50;
             starCount++;
         }
 
         if (percentageAlive >= 50)
         {
             StartCoroutine(SetActiveWithDelay(0.75f, stars[1]));
-            gems += 50;
+            gems += 100;
             starCount++;
         }
 
         if (percentageAlive >= 75)
         {
             StartCoroutine(SetActiveWithDelay(1.25f, stars[2]));
-            gems += 100;
+            gems += 200;
             starCount++;
         }
 
         GradePerformance(starCount);
-        gems += rectaheadAlive * 1;
+        gems += rectaheadAlive * 5;
         StartCoroutine(GemCount());
 
         ES3.Save("Stars", starCount, "Save/Levels/" + SceneManager.GetActiveScene().name);
@@ -98,11 +98,11 @@ public class LevelEndManager : MonoBehaviour
         }
         else if (gems < 100)
         {
-            countRate = 0.05f;
+            countRate = 0.025f;
         }
         else
         {
-            countRate = 0.02f;
+            countRate = 0.01f;
         }
 
         for (int i = 0; i <= gems; i ++)

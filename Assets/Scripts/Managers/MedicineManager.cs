@@ -58,10 +58,19 @@ public class MedicineManager : MonoBehaviour
 
     private void Start()
     {
-
+        moneyText.text = money.ToString();
         FormMedicineArray();
-        OnMedicineChanged();
+        currentMedicine = toggleGroup.ActiveToggles().First().gameObject.GetComponent<Medicine>().MedicineType;
+        Medicine medicine = toggleGroup.ActiveToggles().First().gameObject.GetComponent<Medicine>();
+        currentMedicine = medicine.MedicineType;
+        currentCost = medicine.Cost;
     }
+
+    public void OnPointerEnter()
+    {
+        AudioManager.Instance.PlayMouseOverSound();
+    }
+
 
     private void FormMedicineArray()
     {
@@ -217,6 +226,7 @@ public class MedicineManager : MonoBehaviour
 
         if(currentMedicine == MedicineType.emergency && currentCost <= Money)
         {
+            AudioManager.Instance.PlayEmergencySound();
             Money -= currentCost;
             ApplyEmergency();
         }
@@ -225,6 +235,7 @@ public class MedicineManager : MonoBehaviour
 
     public void OnMedicineChanged()
     {
+        AudioManager.Instance.PlayMedicineChooseSound();
         currentMedicine = toggleGroup.ActiveToggles().First().gameObject.GetComponent<Medicine>().MedicineType;
         Medicine medicine = toggleGroup.ActiveToggles().First().gameObject.GetComponent<Medicine>();
         currentMedicine = medicine.MedicineType;
@@ -234,12 +245,14 @@ public class MedicineManager : MonoBehaviour
 
     public void OnArrowUpPressed()
     {
+        AudioManager.Instance.PlayButtonClickSound();
         ExtensionMethods.ShiftLeft(ref medicine, 1);
         MakeButtonChanges();
     }
 
     public void OnArrowDownPressed()
     {
+        AudioManager.Instance.PlayButtonClickSound();
         ExtensionMethods.ShiftRight(ref medicine, 1);
         MakeButtonChanges();
     }

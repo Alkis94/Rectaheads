@@ -6,21 +6,30 @@ public class LevelLoader : MonoBehaviour
     [SerializeField]
     private string levelToLoad;
 
+
+    public void OnPointerEnter()
+    {
+        AudioManager.Instance.PlayMouseOverSound();
+    }
+
     public void LoadSpecific()
     {
-        SceneManager.LoadScene(levelToLoad);
+        AudioManager.Instance.PlayButtonClickSound();
+        GameManager.Instance.LoadSceneWithFade(levelToLoad);
         Time.timeScale = 1;
     }
 
     public void ReloadLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        AudioManager.Instance.PlayButtonClickSound();
+        GameManager.Instance.LoadSceneWithFade(SceneManager.GetActiveScene().name);
         Time.timeScale = 1;
     }
 
     public void LoadNextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        AudioManager.Instance.PlayButtonClickSound();
+        GameManager.Instance.LoadSceneWithFade(SceneManager.GetActiveScene().buildIndex + 1);
         Time.timeScale = 1;
     }
 }

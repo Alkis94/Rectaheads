@@ -145,3 +145,5 @@ MonoBehaviour:
   swallow: {fileID: 8300000, guid: 34f852b67e3cb45448888eda845062d1, type: 3}
   pain: {fileID: 8300000, guid: 157dd766d04938b448ffac201ca17d5f, type: 3}
   money: {fileID: 8300000, guid: f9206074e21bbd24dac8ffd73306cda4, type: 3}
+  mouseOver: {fileID: 8300000, guid: ea2d91b2aa0071848a0487bd86c1cb6c, type: 3}
+  buttonClick: {fileID: 8300000, guid: ddbe8df64a1958a4db42839f06df3369, type: 3}

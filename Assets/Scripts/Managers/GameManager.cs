@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Audio;
 using TMPro;
@@ -8,6 +9,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private AudioMixer audioMixer;
+    [SerializeField]
+    private RectTransform sceneFader;
 
     public static GameManager Instance { get; private set; } = null;
 
@@ -44,7 +47,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Awake()
+    private void Awake()
     {
         // First we check if there are any other instances conflicting
         if (Instance != null && Instance != this)
@@ -58,15 +61,13 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
 
-        if (Instance == this)
-        {
-            DontDestroyOnLoad(gameObject);
-        }
-
         TalentGlobals.LoadTalentGlobals();
         LoadUnlockedRectaheads();
-        LoadOptions();
+    }
 
+    private void Start()
+    {
+        LoadOptions();
     }
 
     private void OnEnable()
@@ -94,6 +95,32 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void LoadSceneWithFade(string scene)
+    {
+        StartCoroutine(StartLoadSceneWithFade(scene));
+    }
+
+    public void LoadSceneWithFade(int scene)
+    {
+        StartCoroutine(StartLoadSceneWithFade(scene));
+    }
+
+    IEnumerator StartLoadSceneWithFade(string scene)
+    {
+        LeanTween.alpha(sceneFader, 1f, 0.5f).setEase(LeanTweenType.linear);
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene(scene);
+        LeanTween.alpha(sceneFader, 0f, 0.5f).setEase(LeanTweenType.linear);
+    }
+
+    IEnumerator StartLoadSceneWithFade(int scene)
+    {
+        LeanTween.alpha(sceneFader, 1f, 0.5f).setEase(LeanTweenType.linear);
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene(scene);
+        LeanTween.alpha(sceneFader, 0f, 0.5f).setEase(LeanTweenType.linear);
+    }
+
     private void LoadOptions()
     {
         if (ES3.FileExists("Save/General"))
@@ -111,9 +138,8 @@ public class GameManager : MonoBehaviour
 
             if (ES3.KeyExists("SoundEffectsVolume", "Save/General"))
             {
-                float soundeffectsVolume = ES3.Load<float>("SoundEffectsVolume", "Save/General");
-                audioMixer.SetFloat("SoundEffects", soundeffectsVolume);
-
+                float soundEffectsVolume = ES3.Load<float>("SoundEffectsVolume", "Save/General");
+                audioMixer.SetFloat("SoundEffects", soundEffectsVolume);
             }
         }
     }

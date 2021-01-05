@@ -38,4 +38,40 @@ public static class ExtensionMethods
         return name.Substring(0, dot);
     }
 
+    public static bool StringStartsWith(this string a, string b)
+    {
+        int aLength = a.Length;
+        int bLength = b.Length;
+
+        int aCounter = 0;
+        int bCounter = 0;
+
+        while (aCounter < aLength && bCounter < bLength && a[aCounter] == b[bCounter])
+        {
+            aCounter++;
+            bCounter++;
+        }
+
+        return (bCounter == bLength);
+    }
+
+    public static void FadeOut(this AudioSource audioSource, float duration)
+    {
+        audioSource.GetComponent<MonoBehaviour>().StartCoroutine(FadeOutCore(audioSource, duration));
+    }
+
+    private static IEnumerator FadeOutCore(AudioSource audioSource, float duration)
+    {
+        float startVolume = audioSource.volume;
+
+        while (audioSource.volume > 0)
+        {
+            audioSource.volume -= startVolume * Time.deltaTime / duration;
+            yield return new WaitForEndOfFrame();
+        }
+
+        audioSource.Stop();
+        audioSource.volume = startVolume;
+    }
+
 }

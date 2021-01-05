@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class AudioManager : MonoBehaviour
 {
@@ -13,6 +14,14 @@ public class AudioManager : MonoBehaviour
     private AudioClip pain;
     [SerializeField]
     private AudioClip money;
+    [SerializeField]
+    private AudioClip mouseOver;
+    [SerializeField]
+    private AudioClip buttonClick;
+    [SerializeField]
+    private AudioClip emergency;
+    [SerializeField]
+    private AudioClip medicineChoose;
 
     private AudioSource audioSource;
 
@@ -53,4 +62,25 @@ public class AudioManager : MonoBehaviour
     {
         audioSource.PlayOneShot(money);
     }
+
+    public void PlayMouseOverSound()
+    {
+        audioSource.PlayOneShot(mouseOver);
+    }
+
+    public void PlayButtonClickSound()
+    {
+        audioSource.PlayOneShot(buttonClick);
+    }
+
+    public void PlayEmergencySound()
+    {
+        audioSource.PlayOneShot(emergency);
+    }
+
+    public void PlayMedicineChooseSound()
+    {
+        audioSource.PlayOneShot(medicineChoose);
+    }
+
 }

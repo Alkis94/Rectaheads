@@ -27,26 +27,35 @@ public class CameraManager : MonoBehaviour
         EnableCorrectArrows();
     }
 
+    public void OnPointerEnter()
+    {
+        AudioManager.Instance.PlayMouseOverSound();
+    }
+
     public void OnArrowDown()
     {
+        AudioManager.Instance.PlayButtonClickSound();
         MoveCameraY(1);
         EnableCorrectArrows();
     }
 
     public void OnArrowUp()
     {
+        AudioManager.Instance.PlayButtonClickSound();
         MoveCameraY(-1);
         EnableCorrectArrows();
     }
 
     public void OnArrowRight()
     {
+        AudioManager.Instance.PlayButtonClickSound();
         MoveCameraX(1);
         EnableCorrectArrows();
     }
 
     public void OnArrowLeft()
-    { 
+    {
+        AudioManager.Instance.PlayButtonClickSound();
         MoveCameraX(-1);
         EnableCorrectArrows();
     }

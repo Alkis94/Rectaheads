@@ -11,6 +11,14 @@ public class StarLockLoader : MonoBehaviour
     [SerializeField]
     private GameObject locked;
 
+    public void OnPointerEnter()
+    {
+        if(!locked.activeInHierarchy)
+        {
+            AudioManager.Instance.PlayMouseOverSound();
+        }
+    }
+
     void Start()
     {
         if(ES3.FileExists("Save/Levels/" + level))

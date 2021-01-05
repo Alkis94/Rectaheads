@@ -17,29 +17,39 @@ public class OptionsManager : MonoBehaviour
     {
         if (ES3.FileExists("Save/General"))
         {
-            if (ES3.KeyExists("MusicVolume", "Save/General"))
+            if (ES3.KeyExists("MusicSliderValue", "Save/General"))
             {
-                musicSlider.value = ES3.Load<float>("MusicVolume", "Save/General");
+                musicSlider.value = ES3.Load<float>("MusicSliderValue", "Save/General");
             }
 
-            if (ES3.KeyExists("SoundEffectsVolume", "Save/General"))
+            if (ES3.KeyExists("SoundEffectsSliderValue", "Save/General"))
             {
-                soundEffectsSlider.value = ES3.Load<float>("SoundEffectsVolume", "Save/General");
+                soundEffectsSlider.value = ES3.Load<float>("SoundEffectsSliderValue", "Save/General");
             }
         }
     }
 
-    public void SetMusicVolume(float volume)
+    public void SetMusicVolume(float sliderValue)
     {
-        ES3.Save<float>("MusicVolume", volume, "Save/General");
-        volume = Mathf.Log10(volume) * 20;
+        ES3.Save<float>("MusicSliderValue", sliderValue, "Save/General");
+        float volume = Mathf.Log10(sliderValue) * 20;
+        if (sliderValue == 0f)
+        {
+            volume = -80f;
+        }
         audioMixer.SetFloat("Music", volume);
+        ES3.Save<float>("MusicVolume", volume, "Save/General");
     }
 
-    public void SetSoundEffectsVolume(float volume)
+    public void SetSoundEffectsVolume(float sliderValue)
     {
-        ES3.Save<float>("SoundEffectsVolume", volume, "Save/General");
-        volume = Mathf.Log10(volume) * 20;
+        ES3.Save<float>("SoundEffectsSliderValue", sliderValue, "Save/General");
+        float volume = Mathf.Log10(sliderValue) * 20;
+        if(sliderValue == 0f)
+        {
+            volume = -80f;
+        }
         audioMixer.SetFloat("SoundEffects", volume);
+        ES3.Save<float>("SoundEffectsVolume", volume, "Save/General");
     }
 }

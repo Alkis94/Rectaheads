@@ -12,18 +12,25 @@ public class ShopArrows : MonoBehaviour
     [SerializeField]
     private Button rightArrow;
 
+    public void OnPointerEnter()
+    {
+        AudioManager.Instance.PlayMouseOverSound();
+    }
+
     public void OnLeftPressed()
     {
-        LeanTween.moveX(rectaheads30, -260, 0.75f);
-        LeanTween.moveX(rectaheads45, 0, 0.75f);
+        AudioManager.Instance.PlayButtonClickSound();
+        LeanTween.moveX(rectaheads30, -200, 0.5f);
+        LeanTween.moveX(rectaheads45, 0, 0.5f);
         leftArrow.interactable = false;
         rightArrow.interactable = true;
     }
 
     public void OnRightPressed()
     {
-        LeanTween.moveX(rectaheads30, 0, 0.75f);
-        LeanTween.moveX(rectaheads45, 260, 0.75f);
+        AudioManager.Instance.PlayButtonClickSound();
+        LeanTween.moveX(rectaheads30, 0, 0.5f);
+        LeanTween.moveX(rectaheads45, 200, 0.5f);
         rightArrow.interactable = false;
         leftArrow.interactable = true;
     }
