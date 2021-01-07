@@ -6,6 +6,27 @@ public class SicknessManager : MonoBehaviour
 {
     public static SicknessManager Instance { get; private set; } = null;
 
+    [SerializeField]
+    private float virusMaxAttack = 40;
+    [SerializeField]
+    private float virusInfectionChance = 1;
+    [SerializeField]
+    private readonly float virusCooldown = 30;
+
+    [SerializeField]
+    private float bacteriaMaxAttack = 70;
+    [SerializeField]
+    private float bacteriaInfectionChance = 7;
+    [SerializeField]
+    private readonly float bacteriaCooldown = 15;
+
+    [SerializeField]
+    private float fungiMaxAttack = 60;
+    [SerializeField]
+    private float fungiInfectionChance = 5;
+    [SerializeField]
+    private readonly float fungiCooldown = 20;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -25,29 +46,29 @@ public class SicknessManager : MonoBehaviour
 
     private IEnumerator UpdateEverySecond()
     {
-        float virusCooldown = Time.time + 30;
-        float bacteriaCooldown = Time.time + 15;
-        float fungiCooldown = Time.time + 20;
+        float virusCurrentCooldown = Time.time + virusCooldown;
+        float bacteriaCurrentCooldown = Time.time + bacteriaCooldown;
+        float fungiCurrentCooldown = Time.time + fungiCooldown;
 
         while (true)
         {
-            if(Time.time > virusCooldown)
+            if(Time.time > virusCurrentCooldown)
             {
-                SicknessAttack(RectaheadManager.Instance.RandomAliveRectahead(), SicknessType.virus, 40, 3);
-                virusCooldown = Time.time + 30;
+                SicknessAttack(RectaheadManager.Instance.RandomAliveRectahead(), SicknessType.virus, virusMaxAttack, virusInfectionChance);
+                virusCurrentCooldown = Time.time + virusCooldown;
             }
 
-            if (Time.time > bacteriaCooldown)
+            if (Time.time > bacteriaCurrentCooldown)
             {
-                SicknessAttack(RectaheadManager.Instance.RandomAliveRectahead(), SicknessType.bacteria, 70, 7);
-                bacteriaCooldown = Time.time + 15;
+                SicknessAttack(RectaheadManager.Instance.RandomAliveRectahead(), SicknessType.bacteria, bacteriaMaxAttack, bacteriaInfectionChance);
+                bacteriaCurrentCooldown = Time.time + bacteriaCooldown;
             }
 
 
-            if (Time.time > fungiCooldown)
+            if (Time.time > fungiCurrentCooldown)
             {
-                SicknessAttack(RectaheadManager.Instance.RandomAliveRectahead(), SicknessType.fungi, 60, 5);
-                fungiCooldown = Time.time + 20;
+                SicknessAttack(RectaheadManager.Instance.RandomAliveRectahead(), SicknessType.fungi, fungiMaxAttack, fungiInfectionChance);
+                fungiCurrentCooldown = Time.time + fungiCooldown;
             }
 
             yield return new WaitForSeconds(1f);
@@ -82,7 +103,6 @@ public class SicknessManager : MonoBehaviour
 
     public void SpreadSickness(Vector2Int location, SicknessType sicknessType, float spreadAttack, float spreadChance, SpreadType spreadType)
     {
-
         if (spreadType == SpreadType.cross || spreadType == SpreadType.square)
         {
             if (location.x < RectaheadManager.Instance.Rectaheads.GetLength(0) - 1)
@@ -117,8 +137,6 @@ public class SicknessManager : MonoBehaviour
                 }
             }
         }
-
-
 
         if (spreadType == SpreadType.diagonal || spreadType == SpreadType.square)
         {

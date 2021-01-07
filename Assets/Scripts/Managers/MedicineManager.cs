@@ -288,19 +288,22 @@ public class MedicineManager : MonoBehaviour
         {
             if (RectaheadManager.Instance.Rectaheads[location.x + 1, location.y] != null)
             {
-                if(currentMedicine == MedicineType.megaAntibiotic)
+                if (RectaheadManager.Instance.Rectaheads[location.x + 1, location.y].IsAlive)
                 {
-                    if (RectaheadManager.Instance.Rectaheads[location.x + 1, location.y].SicknessType == SicknessType.bacteria)
+                    if (currentMedicine == MedicineType.megaAntibiotic)
                     {
-                        RectaheadManager.Instance.Rectaheads[location.x + 1, location.y].Recover();
-                    }
+                        if (RectaheadManager.Instance.Rectaheads[location.x + 1, location.y].SicknessType == SicknessType.bacteria)
+                        {
+                            RectaheadManager.Instance.Rectaheads[location.x + 1, location.y].Recover();
+                        }
 
-                    RectaheadManager.Instance.Rectaheads[location.x + 1, location.y].Animator.SetTrigger("SwallowPill");
-                }
-                else if (currentMedicine == MedicineType.megaVitamins)
-                {
-                    RectaheadManager.Instance.Rectaheads[location.x + 1, location.y].ImmuneSystemDefense += 35 + TalentGlobals.ExtraVitaminEffect;
-                    RectaheadManager.Instance.Rectaheads[location.x + 1, location.y].Animator.SetTrigger("SwallowPill");
+                        RectaheadManager.Instance.Rectaheads[location.x + 1, location.y].Animator.SetTrigger("SwallowPill");
+                    }
+                    else if (currentMedicine == MedicineType.megaVitamins)
+                    {
+                        RectaheadManager.Instance.Rectaheads[location.x + 1, location.y].ImmuneSystemDefense += 35 + TalentGlobals.ExtraVitaminEffect;
+                        RectaheadManager.Instance.Rectaheads[location.x + 1, location.y].Animator.SetTrigger("SwallowPill");
+                    }
                 }
             }
         }
@@ -309,19 +312,22 @@ public class MedicineManager : MonoBehaviour
         {
             if (RectaheadManager.Instance.Rectaheads[location.x - 1, location.y] != null)
             {
-                if (currentMedicine == MedicineType.megaAntibiotic)
+                if (RectaheadManager.Instance.Rectaheads[location.x - 1, location.y].IsAlive)
                 {
-                    if (RectaheadManager.Instance.Rectaheads[location.x - 1, location.y].SicknessType == SicknessType.bacteria)
+                    if (currentMedicine == MedicineType.megaAntibiotic)
                     {
-                        RectaheadManager.Instance.Rectaheads[location.x - 1, location.y].Recover();
-                    }
+                        if (RectaheadManager.Instance.Rectaheads[location.x - 1, location.y].SicknessType == SicknessType.bacteria)
+                        {
+                            RectaheadManager.Instance.Rectaheads[location.x - 1, location.y].Recover();
+                        }
 
-                    RectaheadManager.Instance.Rectaheads[location.x - 1, location.y].Animator.SetTrigger("SwallowPill");
-                }
-                else if(currentMedicine == MedicineType.megaVitamins)
-                {
-                    RectaheadManager.Instance.Rectaheads[location.x - 1, location.y].ImmuneSystemDefense += 35 + TalentGlobals.ExtraVitaminEffect;
-                    RectaheadManager.Instance.Rectaheads[location.x - 1, location.y].Animator.SetTrigger("SwallowPill");
+                        RectaheadManager.Instance.Rectaheads[location.x - 1, location.y].Animator.SetTrigger("SwallowPill");
+                    }
+                    else if (currentMedicine == MedicineType.megaVitamins)
+                    {
+                        RectaheadManager.Instance.Rectaheads[location.x - 1, location.y].ImmuneSystemDefense += 35 + TalentGlobals.ExtraVitaminEffect;
+                        RectaheadManager.Instance.Rectaheads[location.x - 1, location.y].Animator.SetTrigger("SwallowPill");
+                    }
                 }
             }
         }
@@ -330,19 +336,22 @@ public class MedicineManager : MonoBehaviour
         {
             if (RectaheadManager.Instance.Rectaheads[location.x, location.y + 1] != null)
             {
-                if (currentMedicine == MedicineType.megaAntibiotic)
+                if (RectaheadManager.Instance.Rectaheads[location.x, location.y + 1].IsAlive)
                 {
-                    if (RectaheadManager.Instance.Rectaheads[location.x, location.y + 1].SicknessType == SicknessType.bacteria)
+                    if (currentMedicine == MedicineType.megaAntibiotic)
                     {
-                        RectaheadManager.Instance.Rectaheads[location.x, location.y + 1].Recover();
-                    }
+                        if (RectaheadManager.Instance.Rectaheads[location.x, location.y + 1].SicknessType == SicknessType.bacteria)
+                        {
+                            RectaheadManager.Instance.Rectaheads[location.x, location.y + 1].Recover();
+                        }
 
-                    RectaheadManager.Instance.Rectaheads[location.x, location.y + 1].Animator.SetTrigger("SwallowPill");
-                }
-                else if (currentMedicine == MedicineType.megaVitamins)
-                {
-                    RectaheadManager.Instance.Rectaheads[location.x, location.y + 1].ImmuneSystemDefense += 35 + TalentGlobals.ExtraVitaminEffect;
-                    RectaheadManager.Instance.Rectaheads[location.x, location.y + 1].Animator.SetTrigger("SwallowPill");
+                        RectaheadManager.Instance.Rectaheads[location.x, location.y + 1].Animator.SetTrigger("SwallowPill");
+                    }
+                    else if (currentMedicine == MedicineType.megaVitamins)
+                    {
+                        RectaheadManager.Instance.Rectaheads[location.x, location.y + 1].ImmuneSystemDefense += 35 + TalentGlobals.ExtraVitaminEffect;
+                        RectaheadManager.Instance.Rectaheads[location.x, location.y + 1].Animator.SetTrigger("SwallowPill");
+                    }
                 }
             }
         }
@@ -351,19 +360,22 @@ public class MedicineManager : MonoBehaviour
         {
             if (RectaheadManager.Instance.Rectaheads[location.x, location.y - 1] != null)
             {
-                if (currentMedicine == MedicineType.megaAntibiotic)
+                if (RectaheadManager.Instance.Rectaheads[location.x, location.y - 1].IsAlive)
                 {
-                    if (RectaheadManager.Instance.Rectaheads[location.x, location.y - 1].SicknessType == SicknessType.bacteria)
+                    if (currentMedicine == MedicineType.megaAntibiotic)
                     {
-                        RectaheadManager.Instance.Rectaheads[location.x, location.y - 1].Recover();
-                    }
+                        if (RectaheadManager.Instance.Rectaheads[location.x, location.y - 1].SicknessType == SicknessType.bacteria)
+                        {
+                            RectaheadManager.Instance.Rectaheads[location.x, location.y - 1].Recover();
+                        }
 
-                    RectaheadManager.Instance.Rectaheads[location.x, location.y - 1].Animator.SetTrigger("SwallowPill");
-                }
-                else if (currentMedicine == MedicineType.megaVitamins)
-                {
-                    RectaheadManager.Instance.Rectaheads[location.x, location.y - 1].ImmuneSystemDefense += 35 + TalentGlobals.ExtraVitaminEffect;
-                    RectaheadManager.Instance.Rectaheads[location.x, location.y - 1].Animator.SetTrigger("SwallowPill");
+                        RectaheadManager.Instance.Rectaheads[location.x, location.y - 1].Animator.SetTrigger("SwallowPill");
+                    }
+                    else if (currentMedicine == MedicineType.megaVitamins)
+                    {
+                        RectaheadManager.Instance.Rectaheads[location.x, location.y - 1].ImmuneSystemDefense += 35 + TalentGlobals.ExtraVitaminEffect;
+                        RectaheadManager.Instance.Rectaheads[location.x, location.y - 1].Animator.SetTrigger("SwallowPill");
+                    }
                 }
             }
         }
@@ -372,19 +384,22 @@ public class MedicineManager : MonoBehaviour
         {
             if (RectaheadManager.Instance.Rectaheads[location.x + 1, location.y + 1] != null)
             {
-                if (currentMedicine == MedicineType.megaAntibiotic)
+                if (RectaheadManager.Instance.Rectaheads[location.x + 1, location.y + 1].IsAlive)
                 {
-                    if (RectaheadManager.Instance.Rectaheads[location.x + 1, location.y + 1].SicknessType == SicknessType.bacteria)
+                    if (currentMedicine == MedicineType.megaAntibiotic)
                     {
-                        RectaheadManager.Instance.Rectaheads[location.x + 1, location.y + 1].Recover();
-                    }
+                        if (RectaheadManager.Instance.Rectaheads[location.x + 1, location.y + 1].SicknessType == SicknessType.bacteria)
+                        {
+                            RectaheadManager.Instance.Rectaheads[location.x + 1, location.y + 1].Recover();
+                        }
 
-                    RectaheadManager.Instance.Rectaheads[location.x + 1, location.y + 1].Animator.SetTrigger("SwallowPill");
-                }
-                else if (currentMedicine == MedicineType.megaVitamins)
-                {
-                    RectaheadManager.Instance.Rectaheads[location.x + 1, location.y + 1].ImmuneSystemDefense += 35 + TalentGlobals.ExtraVitaminEffect;
-                    RectaheadManager.Instance.Rectaheads[location.x + 1, location.y + 1].Animator.SetTrigger("SwallowPill");
+                        RectaheadManager.Instance.Rectaheads[location.x + 1, location.y + 1].Animator.SetTrigger("SwallowPill");
+                    }
+                    else if (currentMedicine == MedicineType.megaVitamins)
+                    {
+                        RectaheadManager.Instance.Rectaheads[location.x + 1, location.y + 1].ImmuneSystemDefense += 35 + TalentGlobals.ExtraVitaminEffect;
+                        RectaheadManager.Instance.Rectaheads[location.x + 1, location.y + 1].Animator.SetTrigger("SwallowPill");
+                    }
                 }
             }
         }
@@ -393,19 +408,22 @@ public class MedicineManager : MonoBehaviour
         {
             if (RectaheadManager.Instance.Rectaheads[location.x + 1, location.y - 1] != null)
             {
-                if (currentMedicine == MedicineType.megaAntibiotic)
+                if (RectaheadManager.Instance.Rectaheads[location.x + 1, location.y - 1].IsAlive)
                 {
-                    if (RectaheadManager.Instance.Rectaheads[location.x + 1, location.y - 1].SicknessType == SicknessType.bacteria)
+                    if (currentMedicine == MedicineType.megaAntibiotic)
                     {
-                        RectaheadManager.Instance.Rectaheads[location.x + 1, location.y - 1].Recover();
-                    }
+                        if (RectaheadManager.Instance.Rectaheads[location.x + 1, location.y - 1].SicknessType == SicknessType.bacteria)
+                        {
+                            RectaheadManager.Instance.Rectaheads[location.x + 1, location.y - 1].Recover();
+                        }
 
-                    RectaheadManager.Instance.Rectaheads[location.x + 1, location.y - 1].Animator.SetTrigger("SwallowPill");
-                }
-                else if (currentMedicine == MedicineType.megaVitamins)
-                {
-                    RectaheadManager.Instance.Rectaheads[location.x + 1, location.y - 1].ImmuneSystemDefense += 35 + TalentGlobals.ExtraVitaminEffect;
-                    RectaheadManager.Instance.Rectaheads[location.x + 1, location.y - 1].Animator.SetTrigger("SwallowPill");
+                        RectaheadManager.Instance.Rectaheads[location.x + 1, location.y - 1].Animator.SetTrigger("SwallowPill");
+                    }
+                    else if (currentMedicine == MedicineType.megaVitamins)
+                    {
+                        RectaheadManager.Instance.Rectaheads[location.x + 1, location.y - 1].ImmuneSystemDefense += 35 + TalentGlobals.ExtraVitaminEffect;
+                        RectaheadManager.Instance.Rectaheads[location.x + 1, location.y - 1].Animator.SetTrigger("SwallowPill");
+                    }
                 }
             }
         }
@@ -414,19 +432,22 @@ public class MedicineManager : MonoBehaviour
         {
             if (RectaheadManager.Instance.Rectaheads[location.x - 1, location.y + 1] != null)
             {
-                if (currentMedicine == MedicineType.megaAntibiotic)
+                if (RectaheadManager.Instance.Rectaheads[location.x - 1, location.y + 1].IsAlive)
                 {
-                    if (RectaheadManager.Instance.Rectaheads[location.x - 1, location.y + 1].SicknessType == SicknessType.bacteria)
+                    if (currentMedicine == MedicineType.megaAntibiotic)
                     {
-                        RectaheadManager.Instance.Rectaheads[location.x - 1, location.y + 1].Recover();
-                    }
+                        if (RectaheadManager.Instance.Rectaheads[location.x - 1, location.y + 1].SicknessType == SicknessType.bacteria)
+                        {
+                            RectaheadManager.Instance.Rectaheads[location.x - 1, location.y + 1].Recover();
+                        }
 
-                    RectaheadManager.Instance.Rectaheads[location.x - 1, location.y + 1].Animator.SetTrigger("SwallowPill");
-                }
-                else if (currentMedicine == MedicineType.megaVitamins)
-                {
-                    RectaheadManager.Instance.Rectaheads[location.x - 1, location.y + 1].ImmuneSystemDefense += 35 + TalentGlobals.ExtraVitaminEffect;
-                    RectaheadManager.Instance.Rectaheads[location.x - 1, location.y + 1].Animator.SetTrigger("SwallowPill");
+                        RectaheadManager.Instance.Rectaheads[location.x - 1, location.y + 1].Animator.SetTrigger("SwallowPill");
+                    }
+                    else if (currentMedicine == MedicineType.megaVitamins)
+                    {
+                        RectaheadManager.Instance.Rectaheads[location.x - 1, location.y + 1].ImmuneSystemDefense += 35 + TalentGlobals.ExtraVitaminEffect;
+                        RectaheadManager.Instance.Rectaheads[location.x - 1, location.y + 1].Animator.SetTrigger("SwallowPill");
+                    }
                 }
             }
         }
@@ -435,19 +456,22 @@ public class MedicineManager : MonoBehaviour
         {
             if (RectaheadManager.Instance.Rectaheads[location.x - 1, location.y - 1] != null)
             {
-                if (currentMedicine == MedicineType.megaAntibiotic)
+                if (RectaheadManager.Instance.Rectaheads[location.x - 1, location.y - 1].IsAlive)
                 {
-                    if (RectaheadManager.Instance.Rectaheads[location.x - 1, location.y - 1].SicknessType == SicknessType.bacteria)
+                    if (currentMedicine == MedicineType.megaAntibiotic)
                     {
-                        RectaheadManager.Instance.Rectaheads[location.x - 1, location.y - 1].Recover();
-                    }
+                        if (RectaheadManager.Instance.Rectaheads[location.x - 1, location.y - 1].SicknessType == SicknessType.bacteria)
+                        {
+                            RectaheadManager.Instance.Rectaheads[location.x - 1, location.y - 1].Recover();
+                        }
 
-                    RectaheadManager.Instance.Rectaheads[location.x - 1, location.y - 1].Animator.SetTrigger("SwallowPill");
-                }
-                else if (currentMedicine == MedicineType.megaVitamins)
-                {
-                    RectaheadManager.Instance.Rectaheads[location.x - 1, location.y - 1].ImmuneSystemDefense += 35 + TalentGlobals.ExtraVitaminEffect;
-                    RectaheadManager.Instance.Rectaheads[location.x - 1, location.y - 1].Animator.SetTrigger("SwallowPill");
+                        RectaheadManager.Instance.Rectaheads[location.x - 1, location.y - 1].Animator.SetTrigger("SwallowPill");
+                    }
+                    else if (currentMedicine == MedicineType.megaVitamins)
+                    {
+                        RectaheadManager.Instance.Rectaheads[location.x - 1, location.y - 1].ImmuneSystemDefense += 35 + TalentGlobals.ExtraVitaminEffect;
+                        RectaheadManager.Instance.Rectaheads[location.x - 1, location.y - 1].Animator.SetTrigger("SwallowPill");
+                    }
                 }
             }
         }

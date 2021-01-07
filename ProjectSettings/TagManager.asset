@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Background
   - Gems
+  - RectaheadCount
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Rectaheads
+  - Microbes
   - 
   - 
   - 
@@ -48,6 +49,9 @@ TagManager:
     locked: 0
   - name: Rectaheads
     uniqueID: 259781835
+    locked: 0
+  - name: Microbes
+    uniqueID: 2364852485
     locked: 0
   - name: UI
     uniqueID: 1551751091

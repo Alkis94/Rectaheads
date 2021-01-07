@@ -5,6 +5,6 @@ public class Tax : TalentEffect
 {
     public override void Effect()
     {
-        TalentGlobals.ChangeExtraMoney(3);
+        TalentGlobals.ChangeExtraMoney(5);
     }
 }

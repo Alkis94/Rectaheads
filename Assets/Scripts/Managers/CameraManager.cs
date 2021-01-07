@@ -17,6 +17,9 @@ public class CameraManager : MonoBehaviour
     [SerializeField]
     private Button arrowRight;
 
+    private float cooldownY = 0;
+    private float cooldownX = 0;
+
     private void Start()
     {
         virtualCamera = FindObjectOfType<CinemachineVirtualCamera>().gameObject;
@@ -27,6 +30,38 @@ public class CameraManager : MonoBehaviour
         EnableCorrectArrows();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+        {
+            if(arrowUp.interactable)
+            {
+                OnArrowUp();
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+        {
+            if (arrowDown.interactable)
+            {
+                OnArrowDown();
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+        {
+            if (arrowLeft.interactable)
+            {
+                OnArrowLeft();
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+        {
+            if (arrowRight.interactable)
+            {
+                OnArrowRight();
+            }
+        }
+    }
+
     public void OnPointerEnter()
     {
         AudioManager.Instance.PlayMouseOverSound();
@@ -34,30 +69,46 @@ public class CameraManager : MonoBehaviour
 
     public void OnArrowDown()
     {
-        AudioManager.Instance.PlayButtonClickSound();
-        MoveCameraY(1);
-        EnableCorrectArrows();
+        if(Time.time > cooldownY)
+        {
+            cooldownX = Time.time + 0.5f;
+            AudioManager.Instance.PlayButtonClickSound();
+            MoveCameraY(1);
+            EnableCorrectArrows();
+        }
     }
 
     public void OnArrowUp()
     {
-        AudioManager.Instance.PlayButtonClickSound();
-        MoveCameraY(-1);
-        EnableCorrectArrows();
+        if (Time.time > cooldownY)
+        {
+            cooldownX = Time.time + 0.5f;
+            AudioManager.Instance.PlayButtonClickSound();
+            MoveCameraY(-1);
+            EnableCorrectArrows();
+        }
     }
 
     public void OnArrowRight()
     {
-        AudioManager.Instance.PlayButtonClickSound();
-        MoveCameraX(1);
-        EnableCorrectArrows();
+        if (Time.time > cooldownX)
+        {
+            cooldownY = Time.time + 0.5f;
+            AudioManager.Instance.PlayButtonClickSound();
+            MoveCameraX(1);
+            EnableCorrectArrows();
+        }
     }
 
     public void OnArrowLeft()
     {
-        AudioManager.Instance.PlayButtonClickSound();
-        MoveCameraX(-1);
-        EnableCorrectArrows();
+        if (Time.time > cooldownX)
+        {
+            cooldownY = Time.time + 0.5f;
+            AudioManager.Instance.PlayButtonClickSound();
+            MoveCameraX(-1);
+            EnableCorrectArrows();
+        }
     }
 
     private void MoveCameraX(int x)

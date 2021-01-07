@@ -22,6 +22,11 @@ public class AudioManager : MonoBehaviour
     private AudioClip emergency;
     [SerializeField]
     private AudioClip medicineChoose;
+    [SerializeField]
+    private AudioClip microbeAttack;
+    [SerializeField]
+    private AudioClip microbeDeath;
+
 
     private AudioSource audioSource;
 
@@ -81,6 +86,16 @@ public class AudioManager : MonoBehaviour
     public void PlayMedicineChooseSound()
     {
         audioSource.PlayOneShot(medicineChoose);
+    }
+
+    public void PlayMicrobeAttackSound()
+    {
+        audioSource.PlayOneShot(microbeAttack);
+    }
+
+    public void PlayMicrobeDeathSound()
+    {
+        audioSource.PlayOneShot(microbeDeath);
     }
 
 }

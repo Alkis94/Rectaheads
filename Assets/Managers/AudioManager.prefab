@@ -147,3 +147,7 @@ MonoBehaviour:
   money: {fileID: 8300000, guid: f9206074e21bbd24dac8ffd73306cda4, type: 3}
   mouseOver: {fileID: 8300000, guid: ea2d91b2aa0071848a0487bd86c1cb6c, type: 3}
   buttonClick: {fileID: 8300000, guid: ddbe8df64a1958a4db42839f06df3369, type: 3}
+  emergency: {fileID: 8300000, guid: 1ab4fecaeb4c8bb4fac889400311bec4, type: 3}
+  medicineChoose: {fileID: 8300000, guid: c7710910bcd605b4e92b92547545788a, type: 3}
+  microbeAttack: {fileID: 8300000, guid: 124506f745f72c74a80159ee65a914dd, type: 3}
+  microbeDeath: {fileID: 8300000, guid: 36bfe8430b0f0e045be6e2365c441c93, type: 3}

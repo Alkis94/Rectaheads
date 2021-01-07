@@ -643,7 +643,7 @@ PrefabInstance:
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
       propertyPath: talentCost
-      value: 400
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
@@ -1219,7 +1219,7 @@ PrefabInstance:
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
       propertyPath: talentCost
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
@@ -1626,7 +1626,7 @@ PrefabInstance:
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
       propertyPath: talentCost
-      value: 400
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
@@ -2398,7 +2398,7 @@ PrefabInstance:
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
       propertyPath: talentCost
-      value: 500
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
@@ -2938,7 +2938,7 @@ PrefabInstance:
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
       propertyPath: talentCost
-      value: 300
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
@@ -2953,7 +2953,7 @@ PrefabInstance:
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
       propertyPath: talentDescription
-      value: Free sanitizer distribution to population. Reduces bacteria spread chance.
+      value: Free sanitizer distribution. Reduces bacteria spread chance.
       objectReference: {fileID: 0}
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
@@ -3252,7 +3252,7 @@ PrefabInstance:
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
       propertyPath: talentCost
-      value: 300
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
@@ -3449,7 +3449,7 @@ PrefabInstance:
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
       propertyPath: talentCost
-      value: 500
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
@@ -3682,7 +3682,7 @@ PrefabInstance:
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
       propertyPath: talentCost
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
@@ -3858,7 +3858,7 @@ PrefabInstance:
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
       propertyPath: talentCost
-      value: 300
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
@@ -4091,7 +4091,7 @@ PrefabInstance:
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
       propertyPath: talentCost
-      value: 500
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
@@ -5436,7 +5436,13 @@ PrefabInstance:
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
       propertyPath: talentCost
-      value: 100
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
+        type: 3}
+      propertyPath: talentDescription
+      value: Each rank increases average amount of money you gain from rectaheads
+        by 5.
       objectReference: {fileID: 0}
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}

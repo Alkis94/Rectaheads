@@ -19,6 +19,7 @@ public class LevelEndManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI gradeText;
     private AudioSource audioSource;
+    private int oldStarCount = 0;
 
     private void Awake()
     {
@@ -35,6 +36,11 @@ public class LevelEndManager : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+
+        if (ES3.KeyExists("Stars", "Save/Levels/" + SceneManager.GetActiveScene().name))
+        {
+            oldStarCount = ES3.Load<int>("Stars", "Save/Levels/" + SceneManager.GetActiveScene().name);
+        }
     }
 
     public void LevelFinished()
@@ -48,29 +54,38 @@ public class LevelEndManager : MonoBehaviour
         if(percentageAlive >= 25)
         {
             StartCoroutine(SetActiveWithDelay(0.25f, stars[0]));
-            gems += 50;
             starCount++;
         }
 
         if (percentageAlive >= 50)
         {
             StartCoroutine(SetActiveWithDelay(0.75f, stars[1]));
-            gems += 100;
             starCount++;
         }
 
         if (percentageAlive >= 75)
         {
             StartCoroutine(SetActiveWithDelay(1.25f, stars[2]));
-            gems += 200;
             starCount++;
         }
 
         GradePerformance(starCount);
+        gems += starCount - oldStarCount > 0 ? 200 * (starCount - oldStarCount) : 0;
         gems += rectaheadAlive * 5;
         StartCoroutine(GemCount());
 
-        ES3.Save("Stars", starCount, "Save/Levels/" + SceneManager.GetActiveScene().name);
+        if(ES3.KeyExists("Stars", "Save/Levels/" + SceneManager.GetActiveScene().name))
+        {
+            if(starCount > oldStarCount)
+            {
+                ES3.Save("Stars", starCount, "Save/Levels/" + SceneManager.GetActiveScene().name);
+            }
+        }
+        else
+        {
+            ES3.Save("Stars", starCount, "Save/Levels/" + SceneManager.GetActiveScene().name);
+        }
+        
 
         if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
         {
@@ -82,7 +97,6 @@ public class LevelEndManager : MonoBehaviour
         }
 
         GameManager.Instance.Gems += gems;
-
         Time.timeScale = 0;
     }
 
@@ -98,11 +112,11 @@ public class LevelEndManager : MonoBehaviour
         }
         else if (gems < 100)
         {
-            countRate = 0.025f;
+            countRate = 0.01f;
         }
         else
         {
-            countRate = 0.01f;
+            countRate = 0.005f;
         }
 
         for (int i = 0; i <= gems; i ++)

@@ -8,6 +8,7 @@ public class RectaheadManager : MonoBehaviour
     public static RectaheadManager Instance { get; private set; } = null;
     public Rectahead[,] Rectaheads { get; private set; }
     public List<Vector2Int> AliveRectaheadsLocations { get; private set; } =  new List<Vector2Int>();
+    public List<Vector2Int> RectaheadsLocations { get; private set; } = new List<Vector2Int>();
     [SerializeField]
     private List<GameObject> rectaheadVariants;
     [SerializeField]
@@ -67,6 +68,7 @@ public class RectaheadManager : MonoBehaviour
                 Rectaheads[i, j] = Instantiate(RandomRectaheadVariant(), ArrayToLevelCoordinates(i, j), Quaternion.identity, transform).GetComponent<Rectahead>();
                 Rectaheads[i, j].Location = new Vector2Int(i, j);
                 AliveRectaheadsLocations.Add(new Vector2Int(i, j));
+                RectaheadsLocations.Add(new Vector2Int(i, j));
             }
         }
 
@@ -74,11 +76,11 @@ public class RectaheadManager : MonoBehaviour
         RectaheadTotalCount += 15;
     }
 
-    private Vector2 ArrayToLevelCoordinates(int i, int j)
+    private Vector3 ArrayToLevelCoordinates(int i, int j)
     {
         float x = -2 + i;
         float y =  1 - j;
-        return new Vector2(x, y);
+        return new Vector3(x, y, 1);
     }
 
     public void ReduceRectaheadCount()
@@ -107,6 +109,13 @@ public class RectaheadManager : MonoBehaviour
         Vector2Int randomAliveRectahead = AliveRectaheadsLocations[Random.Range(0, AliveRectaheadsLocations.Count - 1)];
         return Rectaheads[randomAliveRectahead.x, randomAliveRectahead.y];
     }
+
+    public Vector3 RandomRectaheadLocation()
+    {
+        Vector2Int randomRectahead = AliveRectaheadsLocations[Random.Range(0, AliveRectaheadsLocations.Count - 1)];
+        return Rectaheads[randomRectahead.x, randomRectahead.y].transform.position;
+    }
+
 
     private GameObject RandomRectaheadVariant ()
     {

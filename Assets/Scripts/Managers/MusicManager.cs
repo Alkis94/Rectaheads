@@ -17,9 +17,13 @@ public class MusicManager : MonoBehaviour
     [SerializeField]
     private AudioClip capital;
 
+    private AudioClip currentAudioClip;
+    private bool isFading;
+
     private void OnEnable()
     {
         audioSource = GetComponent<AudioSource>();
+        currentAudioClip = mainMenu;
         audioSource.clip = mainMenu;
         audioSource.Play();
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -30,59 +34,72 @@ public class MusicManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    void Start()
-    {
-        
-    }
-
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if(scene.name.StringStartsWith("Village"))
         {
-            if (audioSource.clip != village)
+            if (currentAudioClip != village)
             {
-                StartCoroutine(PlayMusicWithDelay(village, 3));
+                currentAudioClip = village;
+                if (!isFading)
+                {
+                    StartCoroutine(FadeOutMusic(2));
+                }
             }
         }
         else if(scene.name.StringStartsWith("Town"))
         {
-            if (audioSource.clip != town)
+            if (currentAudioClip != town)
             {
-                StartCoroutine(PlayMusicWithDelay(town, 3));
+                currentAudioClip = town;
+                if (!isFading)
+                {
+                    StartCoroutine(FadeOutMusic(2));
+                }
             }
         }
         else if (scene.name.StringStartsWith("City"))
         {
-            if (audioSource.clip != city)
+            if (currentAudioClip != city)
             {
-                StartCoroutine(PlayMusicWithDelay(city, 3));
+                currentAudioClip = city;
+                if (!isFading)
+                {
+                    StartCoroutine(FadeOutMusic(2));
+                }
             }
         }
         else if (scene.name.StringStartsWith("Capital"))
         {
-            if (audioSource.clip != capital)
+            if (currentAudioClip != capital)
             {
-                StartCoroutine(PlayMusicWithDelay(capital, 3));
+                currentAudioClip = capital;
+                if (!isFading)
+                {
+                    StartCoroutine(FadeOutMusic(2));
+                }
             }
         }
         else
         {
-            if(audioSource.clip != mainMenu)
+            if(currentAudioClip != mainMenu)
             {
-                StartCoroutine(PlayMusicWithDelay(mainMenu, 3));
+                currentAudioClip = mainMenu;
+                if (!isFading)
+                {
+                    StartCoroutine(FadeOutMusic(2));
+                }
             }
         }
     }
 
-    IEnumerator PlayMusicWithDelay(AudioClip audioClip, float delay)
+    private IEnumerator FadeOutMusic(float duration)
     {
-        if(delay > 1)
-        {
-            audioSource.FadeOut(delay - 1);
-        }
-        yield return new WaitForSeconds(delay);
-        audioSource.clip = audioClip;
+        isFading = true;
+        audioSource.FadeOut(duration);
+        yield return new WaitForSeconds(duration + 1);
+        isFading = false;
+        audioSource.clip = currentAudioClip;
         audioSource.Play();
     }
-
 }

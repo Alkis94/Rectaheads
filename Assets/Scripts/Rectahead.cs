@@ -12,7 +12,8 @@ public class Rectahead : MonoBehaviour
 
     public SicknessType SicknessType { get; private set; } = SicknessType.none;
 
-    private readonly int moneyCooldown = 90;
+    private readonly int minMoneyCooldown = 120;
+    private readonly int maxMoneyCooldown = 180;
     private float sicknessDuration;
     private float timeSick = 0;
     private float immunityDuration = 0;
@@ -98,7 +99,7 @@ public class Rectahead : MonoBehaviour
         {
             if (hasMoney)
             {
-                MedicineManager.Instance.Money += Random.Range(10 + TalentGlobals.ExtraMoney, 50 + TalentGlobals.ExtraMoney);
+                MedicineManager.Instance.Money += Random.Range(30 + TalentGlobals.ExtraMoney, 70 + TalentGlobals.ExtraMoney);
                 hasMoney = false;
                 moneyBubble.SetActive(false);
                 Animator.SetBool("HasMoney", false);
@@ -165,7 +166,7 @@ public class Rectahead : MonoBehaviour
 
     private IEnumerator UpdateEverySecond()
     {
-        int currentMoneyCooldown = Random.Range(0, moneyCooldown);
+        int currentMoneyCooldown = Random.Range(0, maxMoneyCooldown + 30);
         float idleCooldown = Time.time + Random.Range(2,10);
 
         while(true)
@@ -181,24 +182,24 @@ public class Rectahead : MonoBehaviour
                 {
                     case SicknessType.virus:
                         ImmuneSystemDefense -= 1f;
-                        SicknessManager.Instance.SpreadSickness(Location, SicknessType.virus, (30 - TalentGlobals.VirusSpreadReduction) * sicknessTimeFactor, 5, SpreadType.cross);
+                        SicknessManager.Instance.SpreadSickness(Location, SicknessType.virus, (25 - TalentGlobals.VirusSpreadReduction) * sicknessTimeFactor, 1, SpreadType.cross);
                         CheckForKill(15 * sicknessTimeFactor, 1 * sicknessTimeFactor);
                         break;
                     case SicknessType.bacteria:
                         ImmuneSystemDefense -= 2;
-                        SicknessManager.Instance.SpreadSickness(Location, SicknessType.bacteria, (45 - TalentGlobals.BacteriaSpreadReduction) * sicknessTimeFactor, 7, SpreadType.square);
+                        SicknessManager.Instance.SpreadSickness(Location, SicknessType.bacteria, (40 - TalentGlobals.BacteriaSpreadReduction) * sicknessTimeFactor, 5, SpreadType.square);
                         CheckForKill(30 * sicknessTimeFactor, 3 * sicknessTimeFactor);
                         break;
                     case SicknessType.fungi:
                         ImmuneSystemDefense -= 3;
-                        SicknessManager.Instance.SpreadSickness(Location, SicknessType.fungi, (35 - TalentGlobals.FungiSpreadReduction) * sicknessTimeFactor, 3, SpreadType.diagonal);
+                        SicknessManager.Instance.SpreadSickness(Location, SicknessType.fungi, (30 - TalentGlobals.FungiSpreadReduction) * sicknessTimeFactor, 3, SpreadType.diagonal);
                         CheckForKill(5 * sicknessTimeFactor, 0);
                         break;
                     default:
                         break;
                 }
 
-                currentMoneyCooldown = moneyCooldown;
+                currentMoneyCooldown = Random.Range(minMoneyCooldown,maxMoneyCooldown);
                 moneyBubble.SetActive(false);
                 hasMoney = false;
                 Animator.SetBool("HasMoney", false);
@@ -227,7 +228,7 @@ public class Rectahead : MonoBehaviour
 
             if(currentMoneyCooldown <= 0 && !hasMoney)
             {
-                currentMoneyCooldown = Random.Range(moneyCooldown - 20, moneyCooldown + 20);
+                currentMoneyCooldown = Random.Range(minMoneyCooldown, maxMoneyCooldown);
                 moneyBubble.SetActive(true);
                 hasMoney = true;
                 Animator.SetBool("HasMoney", true);

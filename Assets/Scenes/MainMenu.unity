@@ -1109,16 +1109,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2048653650}
     m_Modifications:
-    - target: {fileID: 1468198689825945497, guid: daea49784fe1332469a632b2bd8fecba,
-        type: 3}
-      propertyPath: emergency
-      value: 
-      objectReference: {fileID: 8300000, guid: 1ab4fecaeb4c8bb4fac889400311bec4, type: 3}
-    - target: {fileID: 1468198689825945497, guid: daea49784fe1332469a632b2bd8fecba,
-        type: 3}
-      propertyPath: medicineChoose
-      value: 
-      objectReference: {fileID: 8300000, guid: c7710910bcd605b4e92b92547545788a, type: 3}
     - target: {fileID: 1468198689825945499, guid: daea49784fe1332469a632b2bd8fecba,
         type: 3}
       propertyPath: m_RootOrder
