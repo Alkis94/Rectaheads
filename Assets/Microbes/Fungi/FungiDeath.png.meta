@@ -3,23 +3,23 @@ guid: 2a72dc99acfa24f42a7c4170604af652
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7479804886925381292
-    second: MushroomDeath_0
+      213: -1000356781785896533
+    second: FungiDeath_0
   - first:
-      213: -4970213222725313671
-    second: MushroomDeath_1
+      213: -7547004716072969652
+    second: FungiDeath_1
   - first:
-      213: -3244445104756440312
-    second: MushroomDeath_2
+      213: -5316940839699998938
+    second: FungiDeath_2
   - first:
-      213: 6870529123260261213
-    second: MushroomDeath_3
+      213: 2632380320658302101
+    second: FungiDeath_3
   - first:
-      213: 8845236174306162485
-    second: MushroomDeath_4
+      213: -3257029032285823019
+    second: FungiDeath_4
   - first:
-      213: -3431467992820549625
-    second: MushroomDeath_5
+      213: -2691014388327893341
+    second: FungiDeath_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -141,7 +141,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MushroomDeath_0
+      name: FungiDeath_0
       rect:
         serializedVersion: 2
         x: 0
@@ -155,14 +155,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 451f495c515623890800000000000000
-      internalID: -7479804886925381292
+      spriteID: ba9affc9ec40e12f0800000000000000
+      internalID: -1000356781785896533
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MushroomDeath_1
+      name: FungiDeath_1
       rect:
         serializedVersion: 2
         x: 23
@@ -176,14 +176,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97b12814861460bb0800000000000000
-      internalID: -4970213222725313671
+      spriteID: c4ad54c4237a34790800000000000000
+      internalID: -7547004716072969652
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MushroomDeath_2
+      name: FungiDeath_2
       rect:
         serializedVersion: 2
         x: 46
@@ -197,14 +197,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 803ccb5fd5a69f2d0800000000000000
-      internalID: -3244445104756440312
+      spriteID: 6271ae50a7e6636b0800000000000000
+      internalID: -5316940839699998938
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MushroomDeath_3
+      name: FungiDeath_3
       rect:
         serializedVersion: 2
         x: 69
@@ -218,14 +218,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5367e206d5095f50800000000000000
-      internalID: 6870529123260261213
+      spriteID: 594219664f7188420800000000000000
+      internalID: 2632380320658302101
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MushroomDeath_4
+      name: FungiDeath_4
       rect:
         serializedVersion: 2
         x: 92
@@ -239,14 +239,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53734fbbf6790ca70800000000000000
-      internalID: 8845236174306162485
+      spriteID: 5df18730a55bcc2d0800000000000000
+      internalID: -3257029032285823019
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MushroomDeath_5
+      name: FungiDeath_5
       rect:
         serializedVersion: 2
         x: 115
@@ -260,8 +260,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 708fecd8a0af060d0800000000000000
-      internalID: -3431467992820549625
+      spriteID: 3a63042eba897aad0800000000000000
+      internalID: -2691014388327893341
       vertices: []
       indices: 
       edges: []

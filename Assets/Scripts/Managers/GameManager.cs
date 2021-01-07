@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
+        Time.timeScale = 1;
         GameObject tempGameObject = GameObject.FindGameObjectWithTag("Gems");
         if(tempGameObject != null)
         {
@@ -106,18 +107,18 @@ public class GameManager : MonoBehaviour
 
     IEnumerator StartLoadSceneWithFade(string scene)
     {
-        LeanTween.alpha(sceneFader, 1f, 0.5f).setEase(LeanTweenType.linear);
+        LeanTween.alpha(sceneFader, 1f, 0.5f).setEase(LeanTweenType.linear).setIgnoreTimeScale(true);
         yield return new WaitForSecondsRealtime(0.5f);
         SceneManager.LoadScene(scene);
-        LeanTween.alpha(sceneFader, 0f, 0.5f).setEase(LeanTweenType.linear);
+        LeanTween.alpha(sceneFader, 0f, 0.5f).setEase(LeanTweenType.linear).setIgnoreTimeScale(true);
     }
 
     IEnumerator StartLoadSceneWithFade(int scene)
     {
-        LeanTween.alpha(sceneFader, 1f, 0.5f).setEase(LeanTweenType.linear);
+        LeanTween.alpha(sceneFader, 1f, 0.5f).setEase(LeanTweenType.linear).setIgnoreTimeScale(true);
         yield return new WaitForSecondsRealtime(0.5f);
         SceneManager.LoadScene(scene);
-        LeanTween.alpha(sceneFader, 0f, 0.5f).setEase(LeanTweenType.linear);
+        LeanTween.alpha(sceneFader, 0f, 0.5f).setEase(LeanTweenType.linear).setIgnoreTimeScale(true);
     }
 
     private void LoadOptions()

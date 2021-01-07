@@ -99,7 +99,7 @@ public class Rectahead : MonoBehaviour
         {
             if (hasMoney)
             {
-                MedicineManager.Instance.Money += Random.Range(30 + TalentGlobals.ExtraMoney, 70 + TalentGlobals.ExtraMoney);
+                MedicineManager.Instance.Money += Random.Range(30 + TalentGlobals.ExtraMoney, 50 + TalentGlobals.ExtraMoney);
                 hasMoney = false;
                 moneyBubble.SetActive(false);
                 Animator.SetBool("HasMoney", false);
@@ -166,14 +166,12 @@ public class Rectahead : MonoBehaviour
 
     private IEnumerator UpdateEverySecond()
     {
-        int currentMoneyCooldown = Random.Range(0, maxMoneyCooldown + 30);
+        int currentMoneyCooldown = Random.Range(0, maxMoneyCooldown + 60);
         float idleCooldown = Time.time + Random.Range(2,10);
 
         while(true)
         {
-
             Animator.SetBool("IsSick", IsSick);
-
             if(IsSick)
             {
                 float sicknessTimeFactor = CalculateSicknessTimeFactor();
@@ -182,7 +180,7 @@ public class Rectahead : MonoBehaviour
                 {
                     case SicknessType.virus:
                         ImmuneSystemDefense -= 1f;
-                        SicknessManager.Instance.SpreadSickness(Location, SicknessType.virus, (25 - TalentGlobals.VirusSpreadReduction) * sicknessTimeFactor, 1, SpreadType.cross);
+                        SicknessManager.Instance.SpreadSickness(Location, SicknessType.virus, (30 - TalentGlobals.VirusSpreadReduction) * sicknessTimeFactor, 1, SpreadType.cross);
                         CheckForKill(15 * sicknessTimeFactor, 1 * sicknessTimeFactor);
                         break;
                     case SicknessType.bacteria:
@@ -192,7 +190,7 @@ public class Rectahead : MonoBehaviour
                         break;
                     case SicknessType.fungi:
                         ImmuneSystemDefense -= 3;
-                        SicknessManager.Instance.SpreadSickness(Location, SicknessType.fungi, (30 - TalentGlobals.FungiSpreadReduction) * sicknessTimeFactor, 3, SpreadType.diagonal);
+                        SicknessManager.Instance.SpreadSickness(Location, SicknessType.fungi, (35 - TalentGlobals.FungiSpreadReduction) * sicknessTimeFactor, 3, SpreadType.diagonal);
                         CheckForKill(5 * sicknessTimeFactor, 0);
                         break;
                     default:

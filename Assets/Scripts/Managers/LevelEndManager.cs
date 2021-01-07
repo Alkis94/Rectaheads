@@ -104,26 +104,28 @@ public class LevelEndManager : MonoBehaviour
     {
         audioSource.Play();
 
-        float countRate;
+        float countMultiplier;
 
-        if (gems < 10)
+        if (gems < 100)
         {
-            countRate = 0.2f;
-        }
-        else if (gems < 100)
-        {
-            countRate = 0.01f;
+            countMultiplier = 1;
         }
         else
         {
-            countRate = 0.005f;
+            countMultiplier = 10;
         }
 
-        for (int i = 0; i <= gems; i ++)
+        for (int i = 0; i <= gems / countMultiplier; i ++)
         {
-            gemsText.text = i.ToString();
-            yield return new WaitForSecondsRealtime(countRate);
+            gemsText.text = (i * countMultiplier).ToString() ;
+            yield return new WaitForSecondsRealtime(0.02f);
         }
+
+        if(gems%10 != 0 && countMultiplier == 10)
+        {
+            gemsText.text = gems.ToString();
+        }
+
 
         audioSource.Stop();
     }

@@ -16,20 +16,20 @@ public class LevelLoader : MonoBehaviour
     {
         AudioManager.Instance.PlayButtonClickSound();
         GameManager.Instance.LoadSceneWithFade(levelToLoad);
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
     }
 
     public void ReloadLevel()
     {
         AudioManager.Instance.PlayButtonClickSound();
         GameManager.Instance.LoadSceneWithFade(SceneManager.GetActiveScene().name);
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
     }
 
     public void LoadNextLevel()
     {
         AudioManager.Instance.PlayButtonClickSound();
         GameManager.Instance.LoadSceneWithFade(SceneManager.GetActiveScene().buildIndex + 1);
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
     }
 }
