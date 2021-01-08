@@ -51,27 +51,37 @@ public class LevelEndManager : MonoBehaviour
         int rectaheadTotal = RectaheadManager.Instance.RectaheadTotalCount;
         float percentageAlive = (100 * rectaheadAlive) / rectaheadTotal;
 
-        if(percentageAlive >= 25)
+        if(percentageAlive >= 50)
         {
             StartCoroutine(SetActiveWithDelay(0.25f, stars[0]));
             starCount++;
         }
 
-        if (percentageAlive >= 50)
+        if (percentageAlive >= 75)
         {
             StartCoroutine(SetActiveWithDelay(0.75f, stars[1]));
             starCount++;
         }
 
-        if (percentageAlive >= 75)
+        if (percentageAlive >= 90)
+
         {
             StartCoroutine(SetActiveWithDelay(1.25f, stars[2]));
             starCount++;
         }
 
         GradePerformance(starCount);
-        gems += starCount - oldStarCount > 0 ? 200 * (starCount - oldStarCount) : 0;
-        gems += rectaheadAlive * 5;
+
+        if(starCount > 0)
+        {
+            gems += starCount - oldStarCount > 0 ? 200 * (starCount - oldStarCount) : 0;
+            gems += rectaheadAlive * 5;
+        }
+        else
+        {
+            gems = 100;
+        }
+        
         StartCoroutine(GemCount());
 
         if(ES3.KeyExists("Stars", "Save/Levels/" + SceneManager.GetActiveScene().name))
@@ -104,28 +114,16 @@ public class LevelEndManager : MonoBehaviour
     {
         audioSource.Play();
 
-        float countMultiplier;
-
-        if (gems < 100)
+        for (int i = 0; i <= gems / 10; i ++)
         {
-            countMultiplier = 1;
-        }
-        else
-        {
-            countMultiplier = 10;
-        }
-
-        for (int i = 0; i <= gems / countMultiplier; i ++)
-        {
-            gemsText.text = (i * countMultiplier).ToString() ;
+            gemsText.text = (i * 10).ToString() ;
             yield return new WaitForSecondsRealtime(0.02f);
         }
 
-        if(gems%10 != 0 && countMultiplier == 10)
+        if(gems%10 != 0)
         {
             gemsText.text = gems.ToString();
         }
-
 
         audioSource.Stop();
     }

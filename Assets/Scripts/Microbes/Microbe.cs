@@ -38,7 +38,7 @@ public class Microbe : MonoBehaviour
                     Rectahead rectahead = result.gameObject.GetComponent<Rectahead>();
                     if (rectahead != null)
                     {
-                        SicknessManager.Instance.SicknessAttack(rectahead, sicknessType, 60, 5);
+                        SicknessManager.Instance.SicknessAttack(rectahead, sicknessType, 70, 5);
                     }
                 }
                 AudioManager.Instance.PlayMicrobeAttackSound();

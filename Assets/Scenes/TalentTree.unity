@@ -3464,7 +3464,8 @@ PrefabInstance:
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
       propertyPath: talentDescription
-      value: Unlocks mega vitamin.
+      value: Unlocks mega vitamin. When you use it, the selected rectahead and all
+        surrounding rectaheads take vitamins.
       objectReference: {fileID: 0}
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
@@ -3873,7 +3874,8 @@ PrefabInstance:
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}
       propertyPath: talentDescription
-      value: Unlocks mega antibiotic.
+      value: Unlocks mega antibiotic. When you use it, the selected rectahead and
+        all surrounding rectaheads take antibiotics.
       objectReference: {fileID: 0}
     - target: {fileID: 305064123471676689, guid: 98a2349eae6d63740b3cc88fe37de7ca,
         type: 3}

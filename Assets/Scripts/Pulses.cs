@@ -23,15 +23,15 @@ public class Pulses : MonoBehaviour
             int count = RectaheadManager.Instance.RectaheadCurrentCount;
             float percentageAlive = (100 * count) / total;
 
-            if (percentageAlive > 75)
+            if (percentageAlive > 90)
             {
                 animator.SetTrigger("NoPulse");
             }
-            else if (percentageAlive > 50)
+            else if (percentageAlive > 75)
             {
                 animator.SetTrigger("SmallPulse");
             }
-            else if (percentageAlive > 25)
+            else if (percentageAlive > 50)
             {
                 animator.SetTrigger("BigPulse");
             }

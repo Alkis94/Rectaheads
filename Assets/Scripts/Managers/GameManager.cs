@@ -16,9 +16,11 @@ public class GameManager : MonoBehaviour
 
     public List<int> UnlockedRectaheadIDs { get; set; } = new List<int>();
     public bool[] IsRectaheadUnlocked { get; set; } = new bool[30];
+    public LevelType LastPlayedLevel { get; private set; }
 
     private int gems = 0;
     private TextMeshProUGUI gemsText;
+    
 
     public int Gems
     {
@@ -93,6 +95,29 @@ public class GameManager : MonoBehaviour
         {
             gemsText.text = Gems.ToString();
         }
+
+        if (scene.name.StringStartsWith("Village"))
+        {
+            LastPlayedLevel = LevelType.village;
+            ES3.Save<int>("LastPlayedLevel", (int)LastPlayedLevel, "Save/General");
+        }
+        else if (scene.name.StringStartsWith("Town"))
+        {
+            LastPlayedLevel = LevelType.town;
+            ES3.Save<int>("LastPlayedLevel", (int)LastPlayedLevel, "Save/General");
+        }
+        else if (scene.name.StringStartsWith("City"))
+        {
+            LastPlayedLevel = LevelType.city;
+            ES3.Save<int>("LastPlayedLevel", (int)LastPlayedLevel, "Save/General");
+        }
+        else if (scene.name.StringStartsWith("Capital"))
+        {
+            LastPlayedLevel = LevelType.capital;
+            ES3.Save<int>("LastPlayedLevel", (int)LastPlayedLevel, "Save/General");
+        }
+
+
     }
 
     public void LoadSceneWithFade(string scene)
@@ -140,6 +165,10 @@ public class GameManager : MonoBehaviour
             {
                 float soundEffectsVolume = ES3.Load<float>("SoundEffectsVolume", "Save/General");
                 audioMixer.SetFloat("SoundEffects", soundEffectsVolume);
+            }
+            if (ES3.KeyExists("LastPlayedLevel", "Save/General"))
+            {
+                LastPlayedLevel = (LevelType)ES3.Load<int>("LastPlayedLevel", "Save/General");
             }
         }
     }

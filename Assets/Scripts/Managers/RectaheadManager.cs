@@ -88,7 +88,7 @@ public class RectaheadManager : MonoBehaviour
         RectaheadCurrentCount--;
         rectaheadCount.text = RectaheadCurrentCount + "/" + RectaheadTotalCount;
 
-        if( RectaheadCurrentCount  * 100 / RectaheadTotalCount < 25)
+        if( RectaheadCurrentCount  * 100 / RectaheadTotalCount < 50)
         {
             LevelEndManager.Instance.LevelFinished();
         }

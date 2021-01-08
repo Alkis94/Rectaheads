@@ -20,7 +20,7 @@ public class Fungi : Microbe
             Rectahead rectahead = result.gameObject.GetComponent<Rectahead>();
             if (rectahead != null)
             {
-                SicknessManager.Instance.SicknessAttack(rectahead, SicknessType.fungi, 60, 5);
+                SicknessManager.Instance.SicknessAttack(rectahead, SicknessType.fungi, 70, 5);
             }
         }
         AudioManager.Instance.PlayMicrobeAttackSound();
